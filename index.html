@@ -1,0 +1,1743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BotShare | Premium Robot Rental Platform Europe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #2563eb;
+            --secondary: #8b5cf6;
+            --accent: #06b6d4;
+            --danger: #ef4444;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #64748b;
+            --text-tertiary: #94a3b8;
+            --border: #e2e8f0;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding-bottom: 70px;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            z-index: 998;
+            background: var(--bg-white);
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            padding: 0.5rem;
+        }
+
+        .lang-btn {
+            display: block;
+            width: 45px;
+            height: 40px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+            margin: 0.25rem 0;
+        }
+
+        .lang-btn:hover {
+            background: var(--bg-light);
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+        }
+
+        /* Header */
+        .header {
+            background: var(--bg-white);
+            padding: 0.75rem 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-image {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .logo-main {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .logo-sub {
+            font-size: 0.65rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .icon-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            background: var(--bg-light);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .icon-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Banner Carousel */
+        .banner-carousel {
+            margin: 1.5rem 0;
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            height: 200px;
+            background: #000;
+        }
+
+        .banner-slide {
+            display: none;
+            height: 100%;
+        }
+
+        .banner-slide.active {
+            display: block;
+        }
+
+        .banner-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            z-index: 10;
+        }
+
+        .indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .indicator.active {
+            width: 24px;
+            border-radius: 4px;
+            background: white;
+        }
+
+        /* Promo Cards */
+        .promo-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .promo-card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+            transition: transform 0.3s;
+            height: 100px;
+            background: var(--bg-white);
+        }
+
+        .promo-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .promo-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Section Header */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 2rem 0 1rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .section-subtitle {
+            color: var(--text-tertiary);
+            margin-left: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .more-link {
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .product-card {
+            background: var(--bg-white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 1rem;
+        }
+
+        .product-info {
+            padding: 1rem;
+        }
+
+        .product-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            min-height: 2.8em;
+            line-height: 1.4;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-current {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--danger);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .price-original {
+            font-size: 0.9rem;
+            color: var(--text-tertiary);
+            text-decoration: line-through;
+        }
+
+        .price-label {
+            font-size: 0.75rem;
+            color: var(--danger);
+            background: rgba(239, 68, 68, 0.1);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        /* CTA Banner */
+        .cta-banner {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            margin: 1.5rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: transform 0.3s;
+            box-shadow: var(--shadow-md);
+        }
+
+        .cta-banner:hover {
+            transform: translateY(-4px);
+        }
+
+        .cta-content h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .cta-content p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .cta-arrow {
+            font-size: 2rem;
+        }
+
+        /* Skills/Videos Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .skill-card {
+            background: var(--bg-white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .skill-video {
+            width: 100%;
+            height: 160px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-video img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .play-button {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .skill-info {
+            padding: 0.75rem;
+        }
+
+        .skill-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .skill-description {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Partnership Section */
+        .partnership-cards {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .partnership-card {
+            background: var(--bg-white);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            gap: 1rem;
+            transition: all 0.3s;
+        }
+
+        .partnership-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .partnership-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .partnership-content {
+            flex: 1;
+        }
+
+        .partnership-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            gap: 1rem;
+        }
+
+        .partnership-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .apply-btn {
+            padding: 0.5rem 1.25rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .apply-btn:hover {
+            background: var(--primary-dark);
+            transform: scale(1.05);
+        }
+
+        .partnership-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+
+        .partnership-features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .partnership-features li {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            padding-left: 1.25rem;
+            position: relative;
+        }
+
+        .partnership-features li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* News Feed */
+        .news-feed {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .news-item {
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 1rem;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            gap: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .news-item:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .news-content {
+            flex: 1;
+        }
+
+        .news-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            line-height: 1.5;
+        }
+
+        .news-date {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+        }
+
+        .news-image {
+            width: 100px;
+            height: 70px;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: var(--bg-light);
+        }
+
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-white);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-around;
+            padding: 0.5rem 0;
+            box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
+            z-index: 1000;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.8rem;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-item.active {
+            color: var(--primary);
+        }
+
+        .nav-item.active .nav-icon {
+            color: var(--primary);
+        }
+
+        .nav-icon {
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .load-more {
+            text-align: center;
+            padding: 2rem 0;
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+        }
+
+        /* Page Transitions */
+        .page {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .promo-cards {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .partnership-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .product-image {
+                height: 160px;
+            }
+
+            .language-switcher {
+                top: 70px;
+                right: 10px;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .product-image {
+                height: 240px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button class="lang-btn active" data-lang="en" data-country="uk" title="English (UK)">🇬🇧</button>
+        <button class="lang-btn" data-lang="fr" data-country="fr" title="Français">🇫🇷</button>
+        <button class="lang-btn" data-lang="de" data-country="de" title="Deutsch">🇩🇪</button>
+        <button class="lang-btn" data-lang="it" data-country="it" title="Italiano">🇮🇹</button>
+        <button class="lang-btn" data-lang="es" data-country="es" title="Español">🇪🇸</button>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="botshare-logo.png" alt="BotShare" class="logo-image">
+                <div class="logo-text">
+                    <span class="logo-main">BotShare</span>
+                    <span class="logo-sub" data-i18n="header.subtitle">Europe • Powered by Agibot</span>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="icon-btn">⋯</button>
+                <button class="icon-btn">−</button>
+                <button class="icon-btn">◉</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- HOME PAGE -->
+    <div id="home-page" class="page active">
+        <div class="main-content">
+            <!-- Banner Carousel -->
+            <div class="banner-carousel">
+                <div class="banner-slide active">
+                    <img src="https://www.zhiyuan-robot.com/public/uploads/images/20260204/497242e579643b719264287d18684936.jpg" alt="Global Robot Event">
+                </div>
+                <div class="banner-slide">
+                    <img src="https://www.zhiyuan-robot.com/public/uploads/images/20260109/3ff155f9f673930d3095b44c145ef261.jpg" alt="Global Leader">
+                </div>
+                <div class="banner-slide">
+                    <img src="https://www.zhiyuan-robot.com/public/uploads/images/20260109/b9cdca6ddbfbf15bea0cddc2b5a177db.jpg" alt="Production Scale">
+                </div>
+                <div class="carousel-indicators">
+                    <span class="indicator active" data-slide="0"></span>
+                    <span class="indicator" data-slide="1"></span>
+                    <span class="indicator" data-slide="2"></span>
+                </div>
+            </div>
+
+            <!-- Promo Cards -->
+            <div class="promo-cards">
+                <div class="promo-card">
+                    <img src="https://www.zhiyuan-robot.com/public/uploads/images/20260113/532e2375f0789ba10b70cfd71777290d.jpg" alt="Yuanzheng A2">
+                </div>
+                <div class="promo-card">
+                    <img src="https://www.zhiyuan-robot.com/public/uploads/images/20260113/d594f58c5a06b3b5b11d4fa2277e16b2.jpg" alt="Genie G2">
+                </div>
+                <div class="promo-card">
+                    <img src="https://www.zhiyuan-robot.com/public/uploads/images/20260113/8a9f982124b93cb5561ed9f80a2bab37.jpg" alt="Lingxi X2">
+                </div>
+            </div>
+
+            <!-- CTA Banner -->
+            <div class="cta-banner">
+                <div class="cta-content">
+                    <h2 data-i18n="home.cta.title">Rent Robots on BotShare</h2>
+                    <p data-i18n="home.cta.subtitle">🤖 Your Premium Robot Partner in Europe</p>
+                </div>
+                <div class="cta-arrow">→</div>
+            </div>
+
+            <!-- Hot Scenarios -->
+            <div class="section-header">
+                <div>
+                    <span class="section-title" data-i18n="home.section.title">Hot Robots</span>
+                    <span class="section-subtitle" data-i18n="home.section.subtitle">#Premium Selection</span>
+                </div>
+                <a href="#" class="more-link" data-i18n="home.section.more">More →</a>
+            </div>
+
+            <div class="product-grid" id="product-grid">
+                <!-- Products will be dynamically rendered with correct prices -->
+            </div>
+        </div>
+    </div>
+
+    <!-- COMMUNITY PAGE -->
+    <div id="community-page" class="page">
+        <div class="main-content">
+            <div class="section-header" style="margin-top: 1.5rem;">
+                <div class="section-title" data-i18n="community.title">Partnership Opportunities</div>
+            </div>
+
+            <div class="partnership-cards">
+                <div class="partnership-card">
+                    <div class="partnership-icon">👔</div>
+                    <div class="partnership-content">
+                        <div class="partnership-header">
+                            <div class="partnership-title" data-i18n="community.rental.title">Rental Service Provider</div>
+                            <button class="apply-btn" data-i18n="community.rental.button">Apply Now</button>
+                        </div>
+                        <div class="partnership-description" data-i18n="community.rental.description">If you have robot equipment resources and want to expand the rental business across Europe, we provide high-quality customer leads and standardized operation support.</div>
+                        <ul class="partnership-features">
+                            <li data-i18n="community.rental.feature1">Platform traffic support</li>
+                            <li data-i18n="community.rental.feature2">Standardized operation system</li>
+                            <li data-i18n="community.rental.feature3">Professional technical support</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="partnership-card">
+                    <div class="partnership-icon" style="background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);">🏭</div>
+                    <div class="partnership-content">
+                        <div class="partnership-header">
+                            <div class="partnership-title" data-i18n="community.manufacturer.title">Robot Manufacturer</div>
+                            <button class="apply-btn" data-i18n="community.manufacturer.button">Inquire</button>
+                        </div>
+                        <div class="partnership-description" data-i18n="community.manufacturer.description">Companies engaged in humanoid robot production, looking to expand sales channels, enhance brand exposure, and conduct technical R&D cooperation.</div>
+                        <ul class="partnership-features">
+                            <li data-i18n="community.manufacturer.feature1">Production and manufacturing</li>
+                            <li data-i18n="community.manufacturer.feature2">Channel expansion</li>
+                            <li data-i18n="community.manufacturer.feature3">Technical cooperation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="partnership-card">
+                    <div class="partnership-icon" style="background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);">💡</div>
+                    <div class="partnership-content">
+                        <div class="partnership-header">
+                            <div class="partnership-title" data-i18n="community.creator.title">Content Creator</div>
+                            <button class="apply-btn" data-i18n="community.creator.button">Join Us</button>
+                        </div>
+                        <div class="partnership-description" data-i18n="community.creator.description">If you are skilled at developing robot applications, we provide display and sales platforms for skill packages, allowing creativity to become value.</div>
+                        <ul class="partnership-features">
+                            <li data-i18n="community.creator.feature1">Skill pack sales platform</li>
+                            <li data-i18n="community.creator.feature2">Revenue sharing mechanism</li>
+                            <li data-i18n="community.creator.feature3">Technical exchange community</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="partnership-card">
+                    <div class="partnership-icon" style="background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);">🎬</div>
+                    <div class="partnership-content">
+                        <div class="partnership-header">
+                            <div class="partnership-title" data-i18n="community.influencer.title">Influencer / KOL</div>
+                            <button class="apply-btn" data-i18n="community.influencer.button">Collaborate</button>
+                        </div>
+                        <div class="partnership-description" data-i18n="community.influencer.description">If you are an influential content creator, we provide high-quality robot performance resources to help elevate your content creation.</div>
+                        <ul class="partnership-features">
+                            <li data-i18n="community.influencer.feature1">Free robot support</li>
+                            <li data-i18n="community.influencer.feature2">Business cooperation opportunities</li>
+                            <li data-i18n="community.influencer.feature3">Traffic exposure support</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header" style="margin-top: 2.5rem;">
+                <div class="section-title" data-i18n="community.news.title">Latest News</div>
+            </div>
+
+            <div class="news-feed">
+                <div class="news-item">
+                    <div class="news-content">
+                        <div class="news-title" data-i18n="community.news.item1.title">Zhiyuan Holds First European Launch Event in Italy</div>
+                        <div class="news-date">2026-02-02</div>
+                    </div>
+                    <div class="news-image">
+                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20260202/5be04d73dd59232366d5f173f1d52e2b.jpg" alt="Italy Event">
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-content">
+                        <div class="news-title" data-i18n="community.news.item2.title">15x Speed Boost! Zhiyuan Breaks VLA On-Device Deployment Barriers</div>
+                        <div class="news-date">2026-02-02</div>
+                    </div>
+                    <div class="news-image">
+                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20260202/313180dc13f639f90a0178213cc1ae71.png" alt="Tech News">
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-content">
+                        <div class="news-title" data-i18n="community.news.item3.title">Zhiyuan Debuts at UK BETT Exhibition</div>
+                        <div class="news-date">2026-01-30</div>
+                    </div>
+                    <div class="news-image">
+                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20260130/01fbd5294385cb9743e3b81e53fda459.png" alt="BETT">
+                    </div>
+                </div>
+            </div>
+
+            <div class="load-more" data-i18n="community.news.nomore">No more content</div>
+        </div>
+    </div>
+
+    <!-- SKILLS PAGE -->
+    <div id="skills-page" class="page">
+        <div class="main-content">
+            <div class="section-header" style="margin-top: 1.5rem;">
+                <div class="section-title" data-i18n="skills.title">Robot Skill Demonstrations</div>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-video">
+                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20260113/532e2375f0789ba10b70cfd71777290d.jpg" alt="Platform">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="skill-info">
+                        <div class="skill-title" data-i18n="skills.platform.title">Interactive Platform</div>
+                        <div class="skill-description" data-i18n="skills.platform.description">Applicable: Zhiyuan Lingxi X2, Yuanzheng A2...</div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-video">
+                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20260113/8a9f982124b93cb5561ed9f80a2bab37.jpg" alt="Soul">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="skill-info">
+                        <div class="skill-title" data-i18n="skills.soul.title">Soul Platform</div>
+                        <div class="skill-description" data-i18n="skills.soul.description">Applicable: Zhiyuan Lingxi X2...</div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-video">
+                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20250828/95d637abaec556ff7e079e2476938ae1.png" alt="Performance">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="skill-info">
+                        <div class="skill-title" data-i18n="skills.drum.title">Long Drum Dance</div>
+                        <div class="skill-description" data-i18n="skills.drum.description">Applicable: Yuanzheng A2 Youth Edition</div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-video">
+                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20250828/97dedd9e7f7535e97208483a4ce9819b.png" alt="Welcome">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="skill-info">
+                        <div class="skill-title" data-i18n="skills.welcome.title">Welcome Ceremony</div>
+                        <div class="skill-description" data-i18n="skills.welcome.description">Applicable: Yuanzheng A2 Flagship</div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-video">
+                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20241227/2aad139da4f934098b097b36d99b3b74.png" alt="Festive">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="skill-info">
+                        <div class="skill-title" data-i18n="skills.festive.title">Festive Performance</div>
+                        <div class="skill-description" data-i18n="skills.festive.description">Applicable: Genie G1 Series</div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-video">
+                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20251015/22e181d4e8d3c595aeec6c0b72790878.png" alt="Music">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="skill-info">
+                        <div class="skill-title" data-i18n="skills.music.title">Music Performance</div>
+                        <div class="skill-description" data-i18n="skills.music.description">Applicable: Full Product Series</div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-video">
+                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20250820/92ca73204183e700d2484e8db082f3ea.png" alt="Dance">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="skill-info">
+                        <div class="skill-title" data-i18n="skills.dance.title">Dynamic Dance</div>
+                        <div class="skill-description" data-i18n="skills.dance.description">Applicable: Cool D1 Edu</div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-video">
+                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20250521/311a5e9a2962c03a0b40c79eb77a99e7.png" alt="Greeting">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="skill-info">
+                        <div class="skill-title" data-i18n="skills.greeting.title">Interactive Greeting</div>
+                        <div class="skill-description" data-i18n="skills.greeting.description">Applicable: Lingxi X2 Flagship</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="load-more" data-i18n="skills.loadmore">Click to load more</div>
+        </div>
+    </div>
+
+    <!-- PROFILE PAGE -->
+    <div id="profile-page" class="page">
+        <div class="main-content">
+            <div style="text-align: center; padding: 4rem 2rem;">
+                <div style="font-size: 5rem; margin-bottom: 1rem;">👤</div>
+                <div style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;" data-i18n="profile.title">My Profile</div>
+                <div style="color: var(--text-secondary); margin-bottom: 2rem;" data-i18n="profile.subtitle">Login to access your orders and preferences</div>
+                <button class="apply-btn" style="padding: 0.75rem 2rem; font-size: 1rem;" data-i18n="profile.signin">Sign In</button>
+                
+                <div style="margin-top: 3rem; text-align: left; max-width: 500px; margin-left: auto; margin-right: auto;">
+                    <h3 style="margin-bottom: 1rem; color: var(--text-primary);" data-i18n="profile.quicklinks">Quick Links</h3>
+                    <div style="display: grid; gap: 0.75rem;">
+                        <div style="background: var(--bg-white); padding: 1rem; border-radius: 8px; box-shadow: var(--shadow-sm);">
+                            <div style="font-weight: 600; margin-bottom: 0.25rem;" data-i18n="profile.orders.title">📋 My Orders</div>
+                            <div style="font-size: 0.85rem; color: var(--text-secondary);" data-i18n="profile.orders.description">View rental history and current orders</div>
+                        </div>
+                        <div style="background: var(--bg-white); padding: 1rem; border-radius: 8px; box-shadow: var(--shadow-sm);">
+                            <div style="font-weight: 600; margin-bottom: 0.25rem;" data-i18n="profile.favorites.title">⭐ Favorites</div>
+                            <div style="font-size: 0.85rem; color: var(--text-secondary);" data-i18n="profile.favorites.description">Saved robots and collections</div>
+                        </div>
+                        <div style="background: var(--bg-white); padding: 1rem; border-radius: 8px; box-shadow: var(--shadow-sm);">
+                            <div style="font-weight: 600; margin-bottom: 0.25rem;" data-i18n="profile.settings.title">⚙️ Settings</div>
+                            <div style="font-size: 0.85rem; color: var(--text-secondary);" data-i18n="profile.settings.description">Manage account and preferences</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <div class="nav-item active" data-page="home-page">
+            <div class="nav-icon">🏠</div>
+            <div data-i18n="nav.home">Home</div>
+        </div>
+        <div class="nav-item" data-page="community-page">
+            <div class="nav-icon">🔄</div>
+            <div data-i18n="nav.community">Community</div>
+        </div>
+        <div class="nav-item" data-page="skills-page">
+            <div class="nav-icon">🎬</div>
+            <div data-i18n="nav.skills">Skills</div>
+        </div>
+        <div class="nav-item" data-page="profile-page">
+            <div class="nav-icon">👤</div>
+            <div data-i18n="nav.profile">Profile</div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next/21.10.0/i18next.min.js"></script>
+    <script>
+        // Product data with base USD prices (reference)
+        const products = [
+            {
+                id: 'event',
+                nameKey: 'products.event.name',
+                labelKey: 'products.event.label',
+                image: 'https://www.zhiyuan-robot.com/public/uploads/images/20260113/532e2375f0789ba10b70cfd71777290d.jpg',
+                basePrice: 1510 // Base EUR price
+            },
+            {
+                id: 'x2',
+                nameKey: 'products.x2.name',
+                labelKey: 'products.x2.label',
+                image: 'https://www.zhiyuan-robot.com/public/uploads/images/20250521/311a5e9a2962c03a0b40c79eb77a99e7.png',
+                basePrice: 986
+            },
+            {
+                id: 'a2ultra',
+                nameKey: 'products.a2ultra.name',
+                labelKey: 'products.a2ultra.label',
+                image: 'https://www.zhiyuan-robot.com/public/uploads/images/20250828/97dedd9e7f7535e97208483a4ce9819b.png',
+                basePrice: 2000
+            },
+            {
+                id: 'a2pro',
+                nameKey: 'products.a2pro.name',
+                labelKey: 'products.a2pro.label',
+                image: 'https://www.zhiyuan-robot.com/public/uploads/images/20250828/95d637abaec556ff7e079e2476938ae1.png',
+                basePrice: 1644
+            },
+            {
+                id: 'd1ultra',
+                nameKey: 'products.d1ultra.name',
+                labelKey: 'products.d1ultra.label',
+                image: 'https://www.zhiyuan-robot.com/public/uploads/images/20250710/fdf2ff569909f72a46e82034eabfcf3e.png',
+                basePrice: 136
+            },
+            {
+                id: 'd1edu',
+                nameKey: 'products.d1edu.name',
+                labelKey: 'products.d1edu.label',
+                image: 'https://www.zhiyuan-robot.com/public/uploads/images/20250820/92ca73204183e700d2484e8db082f3ea.png',
+                basePrice: 136
+            },
+            {
+                id: 'g2',
+                nameKey: 'products.g2.name',
+                labelKey: 'products.g2.label',
+                image: 'https://www.zhiyuan-robot.com/public/uploads/images/20251015/22e181d4e8d3c595aeec6c0b72790878.png',
+                basePrice: 2400
+            },
+            {
+                id: 'g1',
+                nameKey: 'products.g1.name',
+                labelKey: 'products.g1.label',
+                image: 'https://www.zhiyuan-robot.com/public/uploads/images/20241227/2aad139da4f934098b097b36d99b3b74.png',
+                basePrice: 1800
+            },
+            {
+                id: 'x1',
+                nameKey: 'products.x1.name',
+                labelKey: 'products.x1.label',
+                image: 'https://www.zhiyuan-robot.com/public/uploads/images/20250115/88d888acd3e86c6c404fd0f6f4f72c85.png',
+                basePrice: 1200
+            }
+        ];
+
+        // Currency configuration (based on iPhone pricing strategy)
+        const currencyConfig = {
+            uk: {
+                symbol: '£',
+                rate: 0.85, // GBP rate
+                multiplier: 1.0 // UK base pricing
+            },
+            fr: {
+                symbol: '€',
+                rate: 1.0,
+                multiplier: 1.0 // France uses EUR
+            },
+            de: {
+                symbol: '€',
+                rate: 1.0,
+                multiplier: 0.99 // Germany slightly cheaper
+            },
+            it: {
+                symbol: '€',
+                rate: 1.0,
+                multiplier: 1.02 // Italy slightly more expensive (higher VAT)
+            },
+            es: {
+                symbol: '€',
+                rate: 1.0,
+                multiplier: 1.01 // Spain middle ground
+            }
+        };
+
+        // Translations (继续使用之前的翻译,这里简化显示)
+        const translations = {
+            en: {
+                "header.subtitle": "Europe • Powered by Agibot",
+                "home.cta.title": "Rent Robots on BotShare",
+                "home.cta.subtitle": "🤖 Your Premium Robot Partner in Europe",
+                "home.section.title": "Hot Robots",
+                "home.section.subtitle": "#Premium Selection",
+                "home.section.more": "More →",
+                "products.event.name": "Hunan TV New Year Gala Performance",
+                "products.event.label": "Special Event",
+                "products.x2.name": "Zhiyuan Lingxi X2 Youth Edition",
+                "products.x2.label": "Best Seller",
+                "products.a2ultra.name": "Zhiyuan Yuanzheng A2 Flagship",
+                "products.a2ultra.label": "Premium",
+                "products.a2pro.name": "Zhiyuan Yuanzheng A2 Youth Edition",
+                "products.a2pro.label": "Popular",
+                "products.d1ultra.name": "Zhiyuan Cool Treasure D1 Ultra",
+                "products.d1ultra.label": "Budget Friendly",
+                "products.d1edu.name": "Zhiyuan Cool D1 Pro/Edu",
+                "products.d1edu.label": "Educational",
+                "products.g2.name": "Zhiyuan Genie G2 AI Robot",
+                "products.g2.label": "Industrial",
+                "products.g1.name": "Zhiyuan Genie G1 AI Robot",
+                "products.g1.label": "AI Powered",
+                "products.x1.name": "Zhiyuan Lingxi X1 Open Source",
+                "products.x1.label": "Developer",
+                "community.title": "Partnership Opportunities",
+                "community.rental.title": "Rental Service Provider",
+                "community.rental.button": "Apply Now",
+                "community.rental.description": "Expand your rental business across Europe with our platform support.",
+                "community.rental.feature1": "Platform traffic support",
+                "community.rental.feature2": "Standardized operations",
+                "community.rental.feature3": "Technical support",
+                "community.manufacturer.title": "Robot Manufacturer",
+                "community.manufacturer.button": "Inquire",
+                "community.manufacturer.description": "Expand sales channels and brand exposure in Europe.",
+                "community.manufacturer.feature1": "Production & manufacturing",
+                "community.manufacturer.feature2": "Channel expansion",
+                "community.manufacturer.feature3": "Technical cooperation",
+                "community.creator.title": "Content Creator",
+                "community.creator.button": "Join Us",
+                "community.creator.description": "Monetize your robot skill packages on our platform.",
+                "community.creator.feature1": "Sales platform",
+                "community.creator.feature2": "Revenue sharing",
+                "community.creator.feature3": "Community support",
+                "community.influencer.title": "Influencer / KOL",
+                "community.influencer.button": "Collaborate",
+                "community.influencer.description": "Access premium robots for content creation.",
+                "community.influencer.feature1": "Free robot support",
+                "community.influencer.feature2": "Business opportunities",
+                "community.influencer.feature3": "Exposure support",
+                "community.news.title": "Latest News",
+                "community.news.item1.title": "Zhiyuan Holds First European Launch in Italy",
+                "community.news.item2.title": "15x Speed Boost! VLA Deployment Breakthrough",
+                "community.news.item3.title": "Zhiyuan Debuts at UK BETT Exhibition",
+                "community.news.nomore": "No more content",
+                "skills.title": "Robot Skills",
+                "skills.platform.title": "Interactive Platform",
+                "skills.platform.description": "For Lingxi X2, Yuanzheng A2...",
+                "skills.soul.title": "Soul Platform",
+                "skills.soul.description": "For Lingxi X2...",
+                "skills.drum.title": "Long Drum Dance",
+                "skills.drum.description": "For Yuanzheng A2 Youth",
+                "skills.welcome.title": "Welcome Ceremony",
+                "skills.welcome.description": "For Yuanzheng A2 Flagship",
+                "skills.festive.title": "Festive Performance",
+                "skills.festive.description": "For Genie G1 Series",
+                "skills.music.title": "Music Performance",
+                "skills.music.description": "For All Models",
+                "skills.dance.title": "Dynamic Dance",
+                "skills.dance.description": "For Cool D1 Edu",
+                "skills.greeting.title": "Interactive Greeting",
+                "skills.greeting.description": "For Lingxi X2",
+                "skills.loadmore": "Load more",
+                "profile.title": "My Profile",
+                "profile.subtitle": "Login to access orders and preferences",
+                "profile.signin": "Sign In",
+                "profile.quicklinks": "Quick Links",
+                "profile.orders.title": "📋 My Orders",
+                "profile.orders.description": "View rental history",
+                "profile.favorites.title": "⭐ Favorites",
+                "profile.favorites.description": "Saved robots",
+                "profile.settings.title": "⚙️ Settings",
+                "profile.settings.description": "Account settings",
+                "nav.home": "Home",
+                "nav.community": "Community",
+                "nav.skills": "Skills",
+                "nav.profile": "Profile"
+            },
+            fr: {
+                "header.subtitle": "Europe • Propulsé par Agibot",
+                "home.cta.title": "Louez des robots sur BotShare",
+                "home.cta.subtitle": "🤖 Votre partenaire robot premium en Europe",
+                "home.section.title": "Robots Populaires",
+                "home.section.subtitle": "#Sélection Premium",
+                "home.section.more": "Plus →",
+                "products.event.name": "Performance Gala Nouvel An Hunan TV",
+                "products.event.label": "Événement Spécial",
+                "products.x2.name": "Zhiyuan Lingxi X2 Édition Jeunesse",
+                "products.x2.label": "Meilleure Vente",
+                "products.a2ultra.name": "Zhiyuan Yuanzheng A2 Flagship",
+                "products.a2ultra.label": "Premium",
+                "products.a2pro.name": "Zhiyuan Yuanzheng A2 Jeunesse",
+                "products.a2pro.label": "Populaire",
+                "products.d1ultra.name": "Zhiyuan Cool Treasure D1 Ultra",
+                "products.d1ultra.label": "Économique",
+                "products.d1edu.name": "Zhiyuan Cool D1 Pro/Edu",
+                "products.d1edu.label": "Éducatif",
+                "products.g2.name": "Robot IA Zhiyuan Genie G2",
+                "products.g2.label": "Industriel",
+                "products.g1.name": "Robot IA Zhiyuan Genie G1",
+                "products.g1.label": "IA Avancée",
+                "products.x1.name": "Zhiyuan Lingxi X1 Open Source",
+                "products.x1.label": "Développeur",
+                "community.title": "Opportunités Partenariat",
+                "community.rental.title": "Fournisseur Location",
+                "community.rental.button": "Postuler",
+                "community.rental.description": "Développez votre activité en Europe.",
+                "community.rental.feature1": "Support trafic",
+                "community.rental.feature2": "Opérations standard",
+                "community.rental.feature3": "Support technique",
+                "community.manufacturer.title": "Fabricant",
+                "community.manufacturer.button": "Demander",
+                "community.manufacturer.description": "Développez vos canaux en Europe.",
+                "community.manufacturer.feature1": "Production",
+                "community.manufacturer.feature2": "Extension canaux",
+                "community.manufacturer.feature3": "Coopération technique",
+                "community.creator.title": "Créateur",
+                "community.creator.button": "Rejoindre",
+                "community.creator.description": "Monétisez vos compétences robot.",
+                "community.creator.feature1": "Plateforme vente",
+                "community.creator.feature2": "Partage revenus",
+                "community.creator.feature3": "Support communauté",
+                "community.influencer.title": "Influenceur",
+                "community.influencer.button": "Collaborer",
+                "community.influencer.description": "Robots premium pour contenu.",
+                "community.influencer.feature1": "Support robot gratuit",
+                "community.influencer.feature2": "Opportunités business",
+                "community.influencer.feature3": "Support exposition",
+                "community.news.title": "Actualités",
+                "community.news.item1.title": "Zhiyuan lance en Italie",
+                "community.news.item2.title": "Boost 15x! Percée VLA",
+                "community.news.item3.title": "Zhiyuan au BETT UK",
+                "community.news.nomore": "Fin du contenu",
+                "skills.title": "Compétences Robot",
+                "skills.platform.title": "Plateforme Interactive",
+                "skills.platform.description": "Pour Lingxi X2, Yuanzheng A2...",
+                "skills.soul.title": "Plateforme Soul",
+                "skills.soul.description": "Pour Lingxi X2...",
+                "skills.drum.title": "Danse Tambour",
+                "skills.drum.description": "Pour Yuanzheng A2 Jeunesse",
+                "skills.welcome.title": "Cérémonie Accueil",
+                "skills.welcome.description": "Pour Yuanzheng A2 Flagship",
+                "skills.festive.title": "Performance Festive",
+                "skills.festive.description": "Pour Genie G1",
+                "skills.music.title": "Performance Musicale",
+                "skills.music.description": "Tous modèles",
+                "skills.dance.title": "Danse Dynamique",
+                "skills.dance.description": "Pour Cool D1 Edu",
+                "skills.greeting.title": "Salutation Interactive",
+                "skills.greeting.description": "Pour Lingxi X2",
+                "skills.loadmore": "Charger plus",
+                "profile.title": "Mon Profil",
+                "profile.subtitle": "Connexion pour commandes",
+                "profile.signin": "Se connecter",
+                "profile.quicklinks": "Liens Rapides",
+                "profile.orders.title": "📋 Mes Commandes",
+                "profile.orders.description": "Historique location",
+                "profile.favorites.title": "⭐ Favoris",
+                "profile.favorites.description": "Robots sauvegardés",
+                "profile.settings.title": "⚙️ Paramètres",
+                "profile.settings.description": "Paramètres compte",
+                "nav.home": "Accueil",
+                "nav.community": "Communauté",
+                "nav.skills": "Compétences",
+                "nav.profile": "Profil"
+            },
+            de: {
+                "header.subtitle": "Europa • Powered by Agibot",
+                "home.cta.title": "Mieten Sie Roboter bei BotShare",
+                "home.cta.subtitle": "🤖 Ihr Premium-Roboterpartner in Europa",
+                "home.section.title": "Beliebte Roboter",
+                "home.section.subtitle": "#Premium-Auswahl",
+                "home.section.more": "Mehr →",
+                "products.event.name": "Hunan TV Neujahrs-Gala Performance",
+                "products.event.label": "Sonderveranstaltung",
+                "products.x2.name": "Zhiyuan Lingxi X2 Jugend-Edition",
+                "products.x2.label": "Bestseller",
+                "products.a2ultra.name": "Zhiyuan Yuanzheng A2 Flaggschiff",
+                "products.a2ultra.label": "Premium",
+                "products.a2pro.name": "Zhiyuan Yuanzheng A2 Jugend",
+                "products.a2pro.label": "Beliebt",
+                "products.d1ultra.name": "Zhiyuan Cool Treasure D1 Ultra",
+                "products.d1ultra.label": "Günstig",
+                "products.d1edu.name": "Zhiyuan Cool D1 Pro/Edu",
+                "products.d1edu.label": "Bildung",
+                "products.g2.name": "Zhiyuan Genie G2 KI-Roboter",
+                "products.g2.label": "Industriell",
+                "products.g1.name": "Zhiyuan Genie G1 KI-Roboter",
+                "products.g1.label": "KI-gesteuert",
+                "products.x1.name": "Zhiyuan Lingxi X1 Open Source",
+                "products.x1.label": "Entwickler",
+                "community.title": "Partnermöglichkeiten",
+                "community.rental.title": "Verleihdienstleister",
+                "community.rental.button": "Bewerben",
+                "community.rental.description": "Erweitern Sie Ihr Geschäft in Europa.",
+                "community.rental.feature1": "Traffic-Support",
+                "community.rental.feature2": "Standardbetrieb",
+                "community.rental.feature3": "Technischer Support",
+                "community.manufacturer.title": "Hersteller",
+                "community.manufacturer.button": "Anfragen",
+                "community.manufacturer.description": "Erweitern Sie Vertriebskanäle.",
+                "community.manufacturer.feature1": "Produktion",
+                "community.manufacturer.feature2": "Kanalerweiterung",
+                "community.manufacturer.feature3": "Technische Kooperation",
+                "community.creator.title": "Creator",
+                "community.creator.button": "Beitreten",
+                "community.creator.description": "Monetarisieren Sie Ihre Skills.",
+                "community.creator.feature1": "Verkaufsplattform",
+                "community.creator.feature2": "Umsatzbeteiligung",
+                "community.creator.feature3": "Community-Support",
+                "community.influencer.title": "Influencer",
+                "community.influencer.button": "Zusammenarbeiten",
+                "community.influencer.description": "Premium-Roboter für Content.",
+                "community.influencer.feature1": "Kostenloser Support",
+                "community.influencer.feature2": "Business-Chancen",
+                "community.influencer.feature3": "Exposure-Support",
+                "community.news.title": "Neuigkeiten",
+                "community.news.item1.title": "Zhiyuan Launch in Italien",
+                "community.news.item2.title": "15x Speed! VLA Durchbruch",
+                "community.news.item3.title": "Zhiyuan auf UK BETT",
+                "community.news.nomore": "Kein Inhalt mehr",
+                "skills.title": "Roboter-Skills",
+                "skills.platform.title": "Interaktive Plattform",
+                "skills.platform.description": "Für Lingxi X2, Yuanzheng A2...",
+                "skills.soul.title": "Soul-Plattform",
+                "skills.soul.description": "Für Lingxi X2...",
+                "skills.drum.title": "Trommeltanz",
+                "skills.drum.description": "Für Yuanzheng A2 Jugend",
+                "skills.welcome.title": "Willkommenszeremonie",
+                "skills.welcome.description": "Für Yuanzheng A2 Flaggschiff",
+                "skills.festive.title": "Festliche Performance",
+                "skills.festive.description": "Für Genie G1",
+                "skills.music.title": "Musikperformance",
+                "skills.music.description": "Alle Modelle",
+                "skills.dance.title": "Dynamischer Tanz",
+                "skills.dance.description": "Für Cool D1 Edu",
+                "skills.greeting.title": "Interaktive Begrüßung",
+                "skills.greeting.description": "Für Lingxi X2",
+                "skills.loadmore": "Mehr laden",
+                "profile.title": "Mein Profil",
+                "profile.subtitle": "Login für Bestellungen",
+                "profile.signin": "Anmelden",
+                "profile.quicklinks": "Schnellzugriffe",
+                "profile.orders.title": "📋 Meine Bestellungen",
+                "profile.orders.description": "Mietverlauf",
+                "profile.favorites.title": "⭐ Favoriten",
+                "profile.favorites.description": "Gespeicherte Roboter",
+                "profile.settings.title": "⚙️ Einstellungen",
+                "profile.settings.description": "Kontoeinstellungen",
+                "nav.home": "Start",
+                "nav.community": "Community",
+                "nav.skills": "Skills",
+                "nav.profile": "Profil"
+            },
+            it: {
+                "header.subtitle": "Europa • Powered by Agibot",
+                "home.cta.title": "Noleggia robot su BotShare",
+                "home.cta.subtitle": "🤖 Il tuo partner robot premium in Europa",
+                "home.section.title": "Robot Popolari",
+                "home.section.subtitle": "#Selezione Premium",
+                "home.section.more": "Altro →",
+                "products.event.name": "Performance Gala Capodanno Hunan TV",
+                "products.event.label": "Evento Speciale",
+                "products.x2.name": "Zhiyuan Lingxi X2 Edizione Youth",
+                "products.x2.label": "Più Venduto",
+                "products.a2ultra.name": "Zhiyuan Yuanzheng A2 Flagship",
+                "products.a2ultra.label": "Premium",
+                "products.a2pro.name": "Zhiyuan Yuanzheng A2 Youth",
+                "products.a2pro.label": "Popolare",
+                "products.d1ultra.name": "Zhiyuan Cool Treasure D1 Ultra",
+                "products.d1ultra.label": "Economico",
+                "products.d1edu.name": "Zhiyuan Cool D1 Pro/Edu",
+                "products.d1edu.label": "Educativo",
+                "products.g2.name": "Robot AI Zhiyuan Genie G2",
+                "products.g2.label": "Industriale",
+                "products.g1.name": "Robot AI Zhiyuan Genie G1",
+                "products.g1.label": "AI Avanzato",
+                "products.x1.name": "Zhiyuan Lingxi X1 Open Source",
+                "products.x1.label": "Sviluppatore",
+                "community.title": "Opportunità Partnership",
+                "community.rental.title": "Fornitore Noleggio",
+                "community.rental.button": "Candidati",
+                "community.rental.description": "Espandi il tuo business in Europa.",
+                "community.rental.feature1": "Supporto traffico",
+                "community.rental.feature2": "Operazioni standard",
+                "community.rental.feature3": "Supporto tecnico",
+                "community.manufacturer.title": "Produttore",
+                "community.manufacturer.button": "Richiedi",
+                "community.manufacturer.description": "Espandi i canali di vendita.",
+                "community.manufacturer.feature1": "Produzione",
+                "community.manufacturer.feature2": "Espansione canali",
+                "community.manufacturer.feature3": "Cooperazione tecnica",
+                "community.creator.title": "Creatore",
+                "community.creator.button": "Unisciti",
+                "community.creator.description": "Monetizza le tue competenze.",
+                "community.creator.feature1": "Piattaforma vendita",
+                "community.creator.feature2": "Condivisione ricavi",
+                "community.creator.feature3": "Supporto community",
+                "community.influencer.title": "Influencer",
+                "community.influencer.button": "Collabora",
+                "community.influencer.description": "Robot premium per contenuti.",
+                "community.influencer.feature1": "Supporto robot gratuito",
+                "community.influencer.feature2": "Opportunità business",
+                "community.influencer.feature3": "Supporto esposizione",
+                "community.news.title": "Ultime Notizie",
+                "community.news.item1.title": "Zhiyuan lancia in Italia",
+                "community.news.item2.title": "Boost 15x! Breakthrough VLA",
+                "community.news.item3.title": "Zhiyuan al BETT UK",
+                "community.news.nomore": "Fine contenuti",
+                "skills.title": "Competenze Robot",
+                "skills.platform.title": "Piattaforma Interattiva",
+                "skills.platform.description": "Per Lingxi X2, Yuanzheng A2...",
+                "skills.soul.title": "Piattaforma Soul",
+                "skills.soul.description": "Per Lingxi X2...",
+                "skills.drum.title": "Danza Tamburo",
+                "skills.drum.description": "Per Yuanzheng A2 Youth",
+                "skills.welcome.title": "Cerimonia Benvenuto",
+                "skills.welcome.description": "Per Yuanzheng A2 Flagship",
+                "skills.festive.title": "Performance Festiva",
+                "skills.festive.description": "Per Genie G1",
+                "skills.music.title": "Performance Musicale",
+                "skills.music.description": "Tutti i modelli",
+                "skills.dance.title": "Danza Dinamica",
+                "skills.dance.description": "Per Cool D1 Edu",
+                "skills.greeting.title": "Saluto Interattivo",
+                "skills.greeting.description": "Per Lingxi X2",
+                "skills.loadmore": "Carica altro",
+                "profile.title": "Il Mio Profilo",
+                "profile.subtitle": "Login per ordini",
+                "profile.signin": "Accedi",
+                "profile.quicklinks": "Collegamenti Rapidi",
+                "profile.orders.title": "📋 I Miei Ordini",
+                "profile.orders.description": "Cronologia noleggi",
+                "profile.favorites.title": "⭐ Preferiti",
+                "profile.favorites.description": "Robot salvati",
+                "profile.settings.title": "⚙️ Impostazioni",
+                "profile.settings.description": "Impostazioni account",
+                "nav.home": "Home",
+                "nav.community": "Community",
+                "nav.skills": "Competenze",
+                "nav.profile": "Profilo"
+            },
+            es: {
+                "header.subtitle": "Europa • Impulsado por Agibot",
+                "home.cta.title": "Alquile robots en BotShare",
+                "home.cta.subtitle": "🤖 Su socio premium de robots en Europa",
+                "home.section.title": "Robots Populares",
+                "home.section.subtitle": "#Selección Premium",
+                "home.section.more": "Más →",
+                "products.event.name": "Performance Gala Año Nuevo Hunan TV",
+                "products.event.label": "Evento Especial",
+                "products.x2.name": "Zhiyuan Lingxi X2 Edición Juvenil",
+                "products.x2.label": "Más Vendido",
+                "products.a2ultra.name": "Zhiyuan Yuanzheng A2 Flagship",
+                "products.a2ultra.label": "Premium",
+                "products.a2pro.name": "Zhiyuan Yuanzheng A2 Juvenil",
+                "products.a2pro.label": "Popular",
+                "products.d1ultra.name": "Zhiyuan Cool Treasure D1 Ultra",
+                "products.d1ultra.label": "Económico",
+                "products.d1edu.name": "Zhiyuan Cool D1 Pro/Edu",
+                "products.d1edu.label": "Educativo",
+                "products.g2.name": "Robot IA Zhiyuan Genie G2",
+                "products.g2.label": "Industrial",
+                "products.g1.name": "Robot IA Zhiyuan Genie G1",
+                "products.g1.label": "IA Avanzada",
+                "products.x1.name": "Zhiyuan Lingxi X1 Open Source",
+                "products.x1.label": "Desarrollador",
+                "community.title": "Oportunidades Asociación",
+                "community.rental.title": "Proveedor Alquiler",
+                "community.rental.button": "Solicitar",
+                "community.rental.description": "Expanda su negocio en Europa.",
+                "community.rental.feature1": "Soporte tráfico",
+                "community.rental.feature2": "Operaciones estándar",
+                "community.rental.feature3": "Soporte técnico",
+                "community.manufacturer.title": "Fabricante",
+                "community.manufacturer.button": "Consultar",
+                "community.manufacturer.description": "Expanda canales de venta.",
+                "community.manufacturer.feature1": "Producción",
+                "community.manufacturer.feature2": "Expansión canales",
+                "community.manufacturer.feature3": "Cooperación técnica",
+                "community.creator.title": "Creador",
+                "community.creator.button": "Únase",
+                "community.creator.description": "Monetice sus habilidades.",
+                "community.creator.feature1": "Plataforma ventas",
+                "community.creator.feature2": "Compartir ingresos",
+                "community.creator.feature3": "Soporte comunidad",
+                "community.influencer.title": "Influencer",
+                "community.influencer.button": "Colaborar",
+                "community.influencer.description": "Robots premium para contenido.",
+                "community.influencer.feature1": "Soporte robot gratuito",
+                "community.influencer.feature2": "Oportunidades negocio",
+                "community.influencer.feature3": "Soporte exposición",
+                "community.news.title": "Últimas Noticias",
+                "community.news.item1.title": "Zhiyuan lanza en Italia",
+                "community.news.item2.title": "¡Boost 15x! Avance VLA",
+                "community.news.item3.title": "Zhiyuan en BETT UK",
+                "community.news.nomore": "Sin más contenido",
+                "skills.title": "Habilidades Robot",
+                "skills.platform.title": "Plataforma Interactiva",
+                "skills.platform.description": "Para Lingxi X2, Yuanzheng A2...",
+                "skills.soul.title": "Plataforma Soul",
+                "skills.soul.description": "Para Lingxi X2...",
+                "skills.drum.title": "Danza Tambor",
+                "skills.drum.description": "Para Yuanzheng A2 Juvenil",
+                "skills.welcome.title": "Ceremonia Bienvenida",
+                "skills.welcome.description": "Para Yuanzheng A2 Flagship",
+                "skills.festive.title": "Performance Festiva",
+                "skills.festive.description": "Para Genie G1",
+                "skills.music.title": "Performance Musical",
+                "skills.music.description": "Todos modelos",
+                "skills.dance.title": "Danza Dinámica",
+                "skills.dance.description": "Para Cool D1 Edu",
+                "skills.greeting.title": "Saludo Interactivo",
+                "skills.greeting.description": "Para Lingxi X2",
+                "skills.loadmore": "Cargar más",
+                "profile.title": "Mi Perfil",
+                "profile.subtitle": "Login para pedidos",
+                "profile.signin": "Iniciar Sesión",
+                "profile.quicklinks": "Enlaces Rápidos",
+                "profile.orders.title": "📋 Mis Pedidos",
+                "profile.orders.description": "Historial alquileres",
+                "profile.favorites.title": "⭐ Favoritos",
+                "profile.favorites.description": "Robots guardados",
+                "profile.settings.title": "⚙️ Configuración",
+                "profile.settings.description": "Configuración cuenta",
+                "nav.home": "Inicio",
+                "nav.community": "Comunidad",
+                "nav.skills": "Habilidades",
+                "nav.profile": "Perfil"
+            }
+        };
+
+        // Current state
+        let currentLang = 'en';
+        let currentCountry = 'uk';
+
+        // Format price with currency
+        function formatPrice(price, country) {
+            const config = currencyConfig[country];
+            const adjustedPrice = Math.round(price * config.rate * config.multiplier);
+            
+            // Format based on country
+            if (country === 'uk') {
+                return `${config.symbol}${adjustedPrice.toLocaleString('en-GB')}`;
+            } else {
+                return `${adjustedPrice.toLocaleString('de-DE')}${config.symbol}`;
+            }
+        }
+
+        // Render products
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = '';
+
+            products.forEach(product => {
+                const currentPrice = formatPrice(product.basePrice, currentCountry);
+                const originalPrice = formatPrice(product.basePrice * 1.43, currentCountry);
+                
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.id}">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name" data-i18n="${product.nameKey}"></div>
+                        <div class="product-price">
+                            <span class="price-current">${currentPrice}</span>
+                            <span class="price-original">${originalPrice}</span>
+                        </div>
+                        <span class="price-label" data-i18n="${product.labelKey}"></span>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            // Update translations
+            updateTranslations();
+        }
+
+        // Update all translations
+        function updateTranslations() {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[currentLang] && translations[currentLang][key]) {
+                    element.textContent = translations[currentLang][key];
+                }
+            });
+        }
+
+        // Language switcher
+        const langButtons = document.querySelectorAll('.lang-btn');
+        langButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                currentLang = this.getAttribute('data-lang');
+                currentCountry = this.getAttribute('data-country');
+                
+                // Update active state
+                langButtons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Update content
+                renderProducts();
+                updateTranslations();
+                
+                // Update HTML lang
+                document.documentElement.lang = currentLang;
+            });
+        });
+
+        // Navigation
+        const navItems = document.querySelectorAll('.nav-item');
+        const pages = document.querySelectorAll('.page');
+
+        navItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const targetPage = this.getAttribute('data-page');
+                
+                navItems.forEach(nav => nav.classList.remove('active'));
+                this.classList.add('active');
+                
+                pages.forEach(page => page.classList.remove('active'));
+                document.getElementById(targetPage).classList.add('active');
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        // Banner Carousel
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.banner-slide');
+        const indicators = document.querySelectorAll('.indicator');
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            indicators.forEach(ind => ind.classList.remove('active'));
+            
+            slides[index].classList.add('active');
+            indicators[index].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        setInterval(nextSlide, 4000);
+
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                currentSlide = index;
+                showSlide(currentSlide);
+            });
+        });
+
+        // Initialize
+        renderProducts();
+    </script>
+</body>
+</html>

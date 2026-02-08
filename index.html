@@ -40,28 +40,59 @@
         }
 
         /* Language Switcher */
+        /* 语言切换器 - 下拉菜单 */
         .language-switcher {
-            position: fixed;
-            top: 80px;
-            right: 20px;
-            z-index: 998;
+            position: relative;
+        }
+
+        .language-toggle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: var(--bg-light);
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .language-toggle:hover {
+            background: var(--primary);
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 50px;
+            right: 0;
             background: var(--bg-white);
             border-radius: 12px;
             box-shadow: var(--shadow-md);
             padding: 0.5rem;
+            display: none;
+            min-width: 150px;
+            z-index: 1000;
+        }
+
+        .language-dropdown.show {
+            display: block;
         }
 
         .lang-btn {
-            display: block;
-            width: 45px;
-            height: 40px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 0.5rem 0.75rem;
             border: none;
             background: transparent;
             cursor: pointer;
-            font-size: 1.5rem;
+            font-size: 1rem;
             border-radius: 8px;
             transition: all 0.3s;
-            margin: 0.25rem 0;
+            text-align: left;
         }
 
         .lang-btn:hover {
@@ -70,6 +101,15 @@
 
         .lang-btn.active {
             background: var(--primary);
+            color: white;
+        }
+
+        .lang-flag {
+            font-size: 1.5rem;
+        }
+
+        .lang-name {
+            font-size: 0.9rem;
         }
 
         /* Header */
@@ -811,11 +851,6 @@
                 height: 160px;
             }
 
-            .language-switcher {
-                top: 70px;
-                right: 10px;
-            }
-
             /* 移动端登录按钮 */
             .login-btn {
                 font-size: 0.85rem;
@@ -864,20 +899,11 @@
 </head>
 <body>
     <!-- Language Switcher -->
-    <div class="language-switcher">
-        <button class="lang-btn" data-lang="zh" data-country="zh" title="中文">🇨🇳</button>
-        <button class="lang-btn active" data-lang="en" data-country="uk" title="English (UK)">🇬🇧</button>
-        <button class="lang-btn" data-lang="fr" data-country="fr" title="Français">🇫🇷</button>
-        <button class="lang-btn" data-lang="de" data-country="de" title="Deutsch">🇩🇪</button>
-        <button class="lang-btn" data-lang="it" data-country="it" title="Italiano">🇮🇹</button>
-        <button class="lang-btn" data-lang="es" data-country="es" title="Español">🇪🇸</button>
-    </div>
-
     <!-- Header -->
     <div class="header">
         <div class="header-content">
             <div class="logo">
-                <div class="logo-image" style="display: flex; align-items: center; justify-content: center; font-size: 2rem;">🤖</div>
+                <img src="botshare-logo.png" alt="BotShare" class="logo-image">
                 <div class="logo-text">
                     <span class="logo-main">BotShare</span>
                     <span class="logo-sub" data-i18n="header.subtitle">Europe • Powered by Agibot</span>
@@ -887,6 +913,22 @@
                 <button class="icon-btn" style="font-size: 1.2rem; background: transparent; border: none; cursor: pointer; color: var(--text-primary);">
                     🔍
                 </button>
+                
+                <!-- 语言切换器 -->
+                <div class="language-switcher">
+                    <button class="language-toggle" id="languageToggle">
+                        🌐
+                    </button>
+                    <div class="language-dropdown" id="languageDropdown">
+                        <button class="lang-btn" data-lang="zh"><span class="lang-flag">🇨🇳</span><span class="lang-name">中文</span></button>
+                        <button class="lang-btn active" data-lang="en"><span class="lang-flag">🇬🇧</span><span class="lang-name">English</span></button>
+                        <button class="lang-btn" data-lang="fr"><span class="lang-flag">🇫🇷</span><span class="lang-name">Français</span></button>
+                        <button class="lang-btn" data-lang="de"><span class="lang-flag">🇩🇪</span><span class="lang-name">Deutsch</span></button>
+                        <button class="lang-btn" data-lang="it"><span class="lang-flag">🇮🇹</span><span class="lang-name">Italiano</span></button>
+                        <button class="lang-btn" data-lang="es"><span class="lang-flag">🇪🇸</span><span class="lang-name">Español</span></button>
+                    </div>
+                </div>
+                
                 <button class="login-btn" data-i18n="header.login">
                     登录
                 </button>
@@ -1032,13 +1074,13 @@
             </div>
 
             <div class="booking-section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 1.5rem; border-radius: 16px; margin-bottom: 2rem;">
-                <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
-                    <input type="text" placeholder="选择城市 / Select City" data-i18n-placeholder="home.booking.location" 
-                           style="flex: 1; padding: 0.8rem; border: none; border-radius: 8px; font-size: 0.9rem;">
+                <div style="display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap;">
+                    <input type="text" data-i18n-placeholder="home.booking.location" 
+                           style="flex: 1; min-width: 200px; padding: 0.8rem; border: none; border-radius: 8px; font-size: 0.9rem;">
                     <input type="date" value="2026-02-10" 
-                           style="flex: 1; padding: 0.8rem; border: none; border-radius: 8px; font-size: 0.9rem;">
+                           style="flex: 1; min-width: 150px; padding: 0.8rem; border: none; border-radius: 8px; font-size: 0.9rem;">
                     <input type="date" value="2026-02-11" 
-                           style="flex: 1; padding: 0.8rem; border: none; border-radius: 8px; font-size: 0.9rem;">
+                           style="flex: 1; min-width: 150px; padding: 0.8rem; border: none; border-radius: 8px; font-size: 0.9rem;">
                 </div>
                 <button data-i18n="home.booking.button" 
                         style="width: 100%; padding: 1rem; background: white; color: #667eea; border: none; border-radius: 8px; font-weight: 600; font-size: 1rem; cursor: pointer;">
@@ -2125,16 +2167,42 @@
             });
         }
 
-        // Language switcher
+        // Language switcher - 下拉菜单
+        const languageToggle = document.getElementById('languageToggle');
+        const languageDropdown = document.getElementById('languageDropdown');
         const langButtons = document.querySelectorAll('.lang-btn');
+        
+        // 切换下拉菜单
+        languageToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            languageDropdown.classList.toggle('show');
+        });
+        
+        // 点击页面其他地方关闭下拉菜单
+        document.addEventListener('click', function() {
+            languageDropdown.classList.remove('show');
+        });
+        
+        // 阻止下拉菜单内部点击冒泡
+        languageDropdown.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+        
+        // 语言切换
         langButtons.forEach(btn => {
             btn.addEventListener('click', function() {
                 currentLang = this.getAttribute('data-lang');
-                currentCountry = this.getAttribute('data-country');
                 
                 // Update active state
                 langButtons.forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
+                
+                // Update toggle button with selected flag
+                const selectedFlag = this.querySelector('.lang-flag').textContent;
+                languageToggle.textContent = selectedFlag;
+                
+                // Close dropdown
+                languageDropdown.classList.remove('show');
                 
                 // Update content
                 renderProducts();

@@ -1074,16 +1074,32 @@
             </div>
 
             <div class="booking-section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 1.5rem; border-radius: 16px; margin-bottom: 2rem;">
-                <div style="display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap;">
-                    <input type="text" data-i18n-placeholder="home.booking.location" 
-                           style="flex: 1; min-width: 200px; padding: 0.8rem; border: none; border-radius: 8px; font-size: 0.9rem;">
-                    <input type="date" value="2026-02-10" 
-                           style="flex: 1; min-width: 150px; padding: 0.8rem; border: none; border-radius: 8px; font-size: 0.9rem;">
-                    <input type="date" value="2026-02-11" 
-                           style="flex: 1; min-width: 150px; padding: 0.8rem; border: none; border-radius: 8px; font-size: 0.9rem;">
+                <!-- 第一行: 城市输入 -->
+                <div style="margin-bottom: 1rem;">
+                    <input type="text" 
+                           data-i18n-placeholder="home.booking.location" 
+                           style="width: 100%; padding: 0.8rem; border: none; border-radius: 8px; font-size: 0.9rem; color: #333;">
                 </div>
+                
+                <!-- 第二行: 起始和结束日期 -->
+                <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                    <div style="flex: 1; position: relative;">
+                        <label data-i18n="home.booking.startDate" style="position: absolute; left: 0.8rem; top: 0.8rem; font-size: 0.75rem; color: #999; pointer-events: none;">起始日期</label>
+                        <input type="date" 
+                               value="2026-02-10"
+                               style="width: 100%; padding: 1.8rem 0.8rem 0.4rem 0.8rem; border: none; border-radius: 8px; font-size: 0.9rem; color: #333;">
+                    </div>
+                    <div style="flex: 1; position: relative;">
+                        <label data-i18n="home.booking.endDate" style="position: absolute; left: 0.8rem; top: 0.8rem; font-size: 0.75rem; color: #999; pointer-events: none;">结束日期</label>
+                        <input type="date" 
+                               value="2026-02-11"
+                               style="width: 100%; padding: 1.8rem 0.8rem 0.4rem 0.8rem; border: none; border-radius: 8px; font-size: 0.9rem; color: #333;">
+                    </div>
+                </div>
+                
+                <!-- 推荐按钮 -->
                 <button data-i18n="home.booking.button" 
-                        style="width: 100%; padding: 1rem; background: white; color: #667eea; border: none; border-radius: 8px; font-weight: 600; font-size: 1rem; cursor: pointer;">
+                        style="width: 100%; padding: 1rem; background: white; color: #667eea; border: none; border-radius: 8px; font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.3s;">
                     一键帮我推荐
                 </button>
             </div>
@@ -1472,6 +1488,8 @@
                 "home.scenarios.subtitle": "#精选应用",
                 "home.recommend.title": "为您推荐",
                 "home.booking.location": "选择城市",
+                "home.booking.startDate": "起始日期",
+                "home.booking.endDate": "结束日期",
                 "home.booking.button": "一键帮我推荐",
                 "scenarios.party": "Party活动",
                 "scenarios.party.subtitle": "生日、圣诞等",
@@ -1578,6 +1596,8 @@
                 "home.scenarios.subtitle": "#Featured Applications",
                 "home.recommend.title": "Recommend for Me",
                 "home.booking.location": "Select City",
+                "home.booking.startDate": "Start Date",
+                "home.booking.endDate": "End Date",
                 "home.booking.button": "Recommend for Me",
                 "scenarios.party": "Party Events",
                 "scenarios.party.subtitle": "Birthday, Christmas",
@@ -1686,6 +1706,8 @@
                 "home.scenarios.subtitle": "#Applications Sélectionnées",
                 "home.recommend.title": "Recommandé pour Vous",
                 "home.booking.location": "Sélectionner Ville",
+                "home.booking.startDate": "Date de Début",
+                "home.booking.endDate": "Date de Fin",
                 "home.booking.button": "Recommander",
                 "scenarios.party": "Événements",
                 "scenarios.party.subtitle": "Anniversaire, Noël",
@@ -1794,6 +1816,8 @@
                 "home.scenarios.subtitle": "#Ausgewählte Anwendungen",
                 "home.recommend.title": "Empfehlen für Mich",
                 "home.booking.location": "Stadt Wählen",
+                "home.booking.startDate": "Startdatum",
+                "home.booking.endDate": "Enddatum",
                 "home.booking.button": "Empfehlen",
                 "scenarios.party": "Party Events",
                 "scenarios.party.subtitle": "Geburtstag, Weihnachten",
@@ -1902,6 +1926,8 @@
                 "home.scenarios.subtitle": "#Applicazioni Selezionate",
                 "home.recommend.title": "Consigliato per Te",
                 "home.booking.location": "Seleziona Città",
+                "home.booking.startDate": "Data Inizio",
+                "home.booking.endDate": "Data Fine",
                 "home.booking.button": "Consiglia",
                 "scenarios.party": "Eventi",
                 "scenarios.party.subtitle": "Compleanno, Natale",
@@ -2010,6 +2036,8 @@
                 "home.scenarios.subtitle": "#Aplicaciones Destacadas",
                 "home.recommend.title": "Recomendado para Ti",
                 "home.booking.location": "Seleccionar Ciudad",
+                "home.booking.startDate": "Fecha Inicio",
+                "home.booking.endDate": "Fecha Fin",
                 "home.booking.button": "Recomendar",
                 "scenarios.party": "Eventos",
                 "scenarios.party.subtitle": "Cumpleaños, Navidad",

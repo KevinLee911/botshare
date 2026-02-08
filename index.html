@@ -152,6 +152,32 @@
             color: white;
         }
 
+        /* 登录按钮 */
+        .login-btn {
+            padding: 0.6rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 980px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9rem;
+            min-width: 85px;
+            max-width: 120px;
+            white-space: nowrap;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0,113,227,0.25);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-btn:hover {
+            background: var(--primary-dark);
+            box-shadow: 0 4px 12px rgba(0,113,227,0.35);
+            transform: translateY(-1px);
+        }
+
         /* Main Content */
         .main-content {
             max-width: 1200px;
@@ -789,6 +815,13 @@
                 top: 70px;
                 right: 10px;
             }
+
+            /* 移动端登录按钮 */
+            .login-btn {
+                font-size: 0.85rem;
+                padding: 0.5rem 1rem;
+                min-width: 75px;
+            }
         }
 
         @media (min-width: 769px) {
@@ -844,7 +877,7 @@
     <div class="header">
         <div class="header-content">
             <div class="logo">
-                <img src="botshare-logo.png" alt="BotShare" class="logo-image">
+                <div class="logo-image" style="display: flex; align-items: center; justify-content: center; font-size: 2rem;">🤖</div>
                 <div class="logo-text">
                     <span class="logo-main">BotShare</span>
                     <span class="logo-sub" data-i18n="header.subtitle">Europe • Powered by Agibot</span>
@@ -854,7 +887,7 @@
                 <button class="icon-btn" style="font-size: 1.2rem; background: transparent; border: none; cursor: pointer; color: var(--text-primary);">
                     🔍
                 </button>
-                <button class="icon-btn" data-i18n="header.login" style="padding: 0.6rem 1.5rem; background: var(--primary); color: white; border: none; border-radius: 980px; cursor: pointer; font-weight: 500; font-size: 0.95rem; min-width: 70px; transition: all 0.3s; box-shadow: 0 2px 8px rgba(0,113,227,0.25);">
+                <button class="login-btn" data-i18n="header.login">
                     登录
                 </button>
                 <button class="icon-btn" style="font-size: 1.2rem; background: transparent; border: none; cursor: pointer; color: var(--text-primary); position: relative;">
@@ -912,7 +945,7 @@
             <div class="section-header">
                 <div>
                     <span class="section-title" data-i18n="home.scenarios.title">热门场景</span>
-                    <span class="section-subtitle">#精选应用</span>
+                    <span class="section-subtitle" data-i18n="home.scenarios.subtitle">#精选应用</span>
                 </div>
             </div>
 
@@ -1394,6 +1427,7 @@
                 "home.section.subtitle": "#精选推荐",
                 "home.section.more": "查看更多 →",
                 "home.scenarios.title": "热门场景",
+                "home.scenarios.subtitle": "#精选应用",
                 "home.recommend.title": "为您推荐",
                 "home.booking.location": "选择城市",
                 "home.booking.button": "一键帮我推荐",
@@ -1499,6 +1533,7 @@
                 "home.section.subtitle": "#Premium Selection",
                 "home.section.more": "More →",
                 "home.scenarios.title": "Popular Scenarios",
+                "home.scenarios.subtitle": "#Featured Applications",
                 "home.recommend.title": "Recommend for Me",
                 "home.booking.location": "Select City",
                 "home.booking.button": "Recommend for Me",
@@ -1606,6 +1641,7 @@
                 "home.section.subtitle": "#Sélection Premium",
                 "home.section.more": "Plus →",
                 "home.scenarios.title": "Scénarios Populaires",
+                "home.scenarios.subtitle": "#Applications Sélectionnées",
                 "home.recommend.title": "Recommandé pour Vous",
                 "home.booking.location": "Sélectionner Ville",
                 "home.booking.button": "Recommander",
@@ -1713,6 +1749,7 @@
                 "home.section.subtitle": "#Premium-Auswahl",
                 "home.section.more": "Mehr →",
                 "home.scenarios.title": "Beliebte Szenarien",
+                "home.scenarios.subtitle": "#Ausgewählte Anwendungen",
                 "home.recommend.title": "Empfehlen für Mich",
                 "home.booking.location": "Stadt Wählen",
                 "home.booking.button": "Empfehlen",
@@ -1820,6 +1857,7 @@
                 "home.section.subtitle": "#Selezione Premium",
                 "home.section.more": "Altro →",
                 "home.scenarios.title": "Scenari Popolari",
+                "home.scenarios.subtitle": "#Applicazioni Selezionate",
                 "home.recommend.title": "Consigliato per Te",
                 "home.booking.location": "Seleziona Città",
                 "home.booking.button": "Consiglia",
@@ -1920,13 +1958,14 @@
             },
             es: {
                 "header.subtitle": "Europa • Impulsado por Agibot",
-                "header.login": "Iniciar Sesión",
+                "header.login": "Entrar",
                 "home.cta.title": "Alquile robots en BotShare",
                 "home.cta.subtitle": "🤖 Su socio premium de robots en Europa",
                 "home.section.title": "Robots Populares",
                 "home.section.subtitle": "#Selección Premium",
                 "home.section.more": "Más →",
                 "home.scenarios.title": "Escenarios Populares",
+                "home.scenarios.subtitle": "#Aplicaciones Destacadas",
                 "home.recommend.title": "Recomendado para Ti",
                 "home.booking.location": "Seleccionar Ciudad",
                 "home.booking.button": "Recomendar",

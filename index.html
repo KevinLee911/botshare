@@ -1,28 +1,26 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BotShare | 租机器人就上擎天租</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <title>BotShare | Premium Robot Rental Platform Europe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #3b82f6;
-            --primary-dark: #2563eb;
-            --secondary: #8b5cf6;
-            --accent: #06b6d4;
-            --danger: #ef4444;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --bg-light: #f8fafc;
+            /* Apple风格配色 */
+            --primary: #0071e3;
+            --primary-dark: #0077ed;
+            --secondary: #1d1d1f;
+            --accent: #06c;
+            --bg-light: #fbfbfd;
             --bg-white: #ffffff;
-            --text-primary: #0f172a;
-            --text-secondary: #64748b;
-            --text-tertiary: #94a3b8;
-            --border: #e2e8f0;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
-            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
-            --shadow-lg: 0 10px 30px rgba(0,0,0,0.12);
+            --text-primary: #1d1d1f;
+            --text-secondary: #6e6e73;
+            --text-tertiary: #86868b;
+            --border: #d2d2d7;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 14px rgba(0,0,0,0.1);
+            --shadow-lg: 0 12px 24px rgba(0,0,0,0.15);
         }
 
         * {
@@ -32,10 +30,12 @@
         }
 
         body {
-            font-family: 'Noto Sans SC', 'Outfit', -apple-system, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
             background: var(--bg-light);
             color: var(--text-primary);
-            line-height: 1.6;
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -0.022em;
             padding-bottom: 70px;
         }
 
@@ -74,17 +74,22 @@
 
         /* Header */
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 0.75rem 1rem;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            padding: 0 1rem;
             position: sticky;
             top: 0;
             z-index: 999;
-            box-shadow: var(--shadow-md);
+            border-bottom: 1px solid var(--border);
+            height: 44px;
+            display: flex;
+            align-items: center;
         }
 
         .header-content {
-            max-width: 1200px;
+            max-width: 980px;
             margin: 0 auto;
+            width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -93,57 +98,39 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.5rem;
         }
 
         .logo-image {
-            width: 45px;
-            height: 45px;
+            width: 35px;
+            height: 35px;
             object-fit: contain;
         }
 
         .logo-text {
             display: flex;
             flex-direction: column;
-            line-height: 1.2;
+            line-height: 1.1;
         }
 
         .logo-main {
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: white;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            letter-spacing: -0.01em;
         }
 
         .logo-sub {
-            font-size: 0.65rem;
-            color: rgba(255,255,255,0.9);
-            font-weight: 500;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
+            font-size: 0.6rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            letter-spacing: 0.03em;
         }
 
         .header-actions {
             display: flex;
-            gap: 0.75rem;
+            gap: 1.5rem;
             align-items: center;
-        }
-
-        .login-btn {
-            background: rgba(255,255,255,0.25);
-            color: white;
-            border: 1px solid rgba(255,255,255,0.5);
-            padding: 0.5rem 1.2rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            backdrop-filter: blur(10px);
-        }
-
-        .login-btn:hover {
-            background: rgba(255,255,255,0.35);
-            transform: translateY(-2px);
         }
 
         .icon-btn {
@@ -151,8 +138,7 @@
             height: 36px;
             border-radius: 50%;
             border: none;
-            background: rgba(255,255,255,0.2);
-            color: white;
+            background: var(--bg-light);
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -162,7 +148,8 @@
         }
 
         .icon-btn:hover {
-            background: rgba(255,255,255,0.3);
+            background: var(--primary);
+            color: white;
         }
 
         /* Main Content */
@@ -172,211 +159,112 @@
             padding: 0 1rem;
         }
 
-        /* Hero Banner */
-        .hero-banner {
-            margin: 1.5rem 0;
+        /* Banner Carousel */
+        .banner-carousel {
+            margin: 1rem 0 2rem;
             position: relative;
-            border-radius: 20px;
+            border-radius: 18px;
             overflow: hidden;
-            height: 220px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            box-shadow: var(--shadow-lg);
+            height: 240px;
+            background: #000;
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            padding: 2rem;
-            color: white;
+        .banner-slide {
+            display: none;
+            height: 100%;
         }
 
-        .hero-title {
-            font-size: 2rem;
-            font-weight: 900;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        .banner-slide.active {
+            display: block;
         }
 
-        .hero-subtitle {
-            font-size: 1rem;
-            opacity: 0.95;
-            margin-bottom: 1rem;
+        .banner-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .hero-tags {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .hero-tag {
-            background: rgba(255,255,255,0.25);
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            backdrop-filter: blur(10px);
-        }
-
-        .hero-robot {
+        .carousel-indicators {
             position: absolute;
-            right: -20px;
-            bottom: -20px;
-            width: 200px;
-            height: 200px;
-            opacity: 0.15;
-            pointer-events: none;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
         }
 
-        /* Scenario Grid */
-        .scenario-section {
-            margin: 2rem 0;
+        .indicator {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .indicator.active {
+            background: rgba(255,255,255,0.95);
+        }
+
+        /* Promo Cards */
+        .promo-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .promo-card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+            transition: transform 0.3s;
+            height: 100px;
+            background: var(--bg-white);
+        }
+
+        .promo-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .promo-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Section Header */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 3rem 0 1.5rem;
         }
 
         .section-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .scenario-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .scenario-card {
-            background: var(--bg-white);
-            border-radius: 16px;
-            padding: 1.5rem 1rem;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .scenario-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .scenario-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 0.75rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        .scenario-name {
-            font-size: 0.95rem;
+            font-size: 2rem;
             font-weight: 600;
             color: var(--text-primary);
+            letter-spacing: -0.02em;
         }
 
-        /* Category Buttons */
-        .category-section {
-            display: flex;
-            justify-content: space-around;
-            gap: 1rem;
-            margin: 2rem 0;
+        .section-subtitle {
+            color: var(--text-secondary);
+            margin-left: 0.5rem;
+            font-size: 1rem;
+            font-weight: 400;
         }
 
-        .category-btn {
-            flex: 1;
-            background: var(--bg-white);
-            border: none;
-            border-radius: 16px;
-            padding: 1.5rem 1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: var(--shadow-sm);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .category-btn:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .category-btn.active {
-            background: var(--primary);
-            color: white;
-        }
-
-        .category-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+        .more-link {
+            color: var(--primary);
+            text-decoration: none;
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            background: var(--bg-light);
-        }
-
-        .category-btn.active .category-icon {
-            background: rgba(255,255,255,0.2);
-        }
-
-        .category-name {
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        /* Booking Section */
-        .booking-section {
-            background: var(--bg-white);
-            border-radius: 16px;
-            padding: 1.5rem;
-            margin: 2rem 0;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .booking-row {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .booking-input {
-            flex: 1;
-            padding: 0.75rem 1rem;
-            border: 2px solid var(--border);
-            border-radius: 12px;
-            font-size: 0.95rem;
-            transition: all 0.3s;
-        }
-
-        .booking-input:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-
-        .booking-btn {
-            width: 100%;
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 1rem;
-            border-radius: 12px;
-            font-size: 1.05rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .booking-btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
+            gap: 0.25rem;
+            font-size: 1rem;
+            font-weight: 400;
         }
 
         /* Product Grid */
@@ -387,24 +275,101 @@
             margin-bottom: 2rem;
         }
 
+        /* 8大场景网格 */
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);  /* 手机端2列 */
+            gap: 0.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .scenario-card {
+            position: relative;
+            height: 180px;
+            border-radius: 18px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--border);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* 深色遮罩层 */
+        .scenario-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 100%);
+            z-index: 1;
+        }
+
+        .scenario-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .scenario-card:hover::before {
+            background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 100%);
+        }
+
+        /* 文字层 */
+        .scenario-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .scenario-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+
+        .scenario-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            letter-spacing: -0.01em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .scenario-subtitle {
+            font-size: 0.8rem;
+            opacity: 0.95;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+
         .product-card {
             background: var(--bg-white);
-            border-radius: 16px;
+            border-radius: 18px;
             overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            transition: all 0.3s;
+            border: 1px solid var(--border);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
         }
 
         .product-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-lg);
+            transform: scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            border-color: rgba(0,0,0,0.1);
         }
 
         .product-image {
             width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            height: 220px;
+            background: #fafafa;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -415,49 +380,36 @@
         .product-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-        }
-
-        .product-badge {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background: var(--danger);
-            color: white;
-            padding: 0.3rem 0.7rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
+            object-fit: contain;
+            padding: 1.5rem;
         }
 
         .product-info {
-            padding: 1rem;
+            padding: 1.25rem;
+            text-align: center;
         }
 
         .product-name {
-            font-size: 0.95rem;
+            font-size: 1.05rem;
             font-weight: 600;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
             color: var(--text-primary);
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            min-height: 2.8em;
-            line-height: 1.4;
+            letter-spacing: -0.01em;
+            line-height: 1.3;
         }
 
         .product-price {
             display: flex;
             align-items: baseline;
             gap: 0.5rem;
+            justify-content: center;
+            margin-top: 0.75rem;
         }
 
         .price-current {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--danger);
-            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
         }
 
         .price-original {
@@ -466,85 +418,275 @@
             text-decoration: line-through;
         }
 
-        /* Community Page */
-        .scenario-detail-grid {
+        .price-label {
+            font-size: 0.75rem;
+            color: var(--danger);
+            background: rgba(239, 68, 68, 0.1);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        /* CTA Banner */
+        .cta-banner {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            margin: 1.5rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: transform 0.3s;
+            box-shadow: var(--shadow-md);
+        }
+
+        .cta-banner:hover {
+            transform: translateY(-4px);
+        }
+
+        .cta-content h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .cta-content p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .cta-arrow {
+            font-size: 2rem;
+        }
+
+        /* Skills/Videos Grid */
+        .skills-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            margin-bottom: 2rem;
+            gap: 1rem;
+            margin-bottom: 3rem;
         }
 
-        .scenario-detail-card {
+        .skill-card {
             background: var(--bg-white);
-            border-radius: 20px;
+            border-radius: 18px;
             overflow: hidden;
-            box-shadow: var(--shadow-md);
-            transition: all 0.3s;
+            border: 1px solid var(--border);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
         }
 
-        .scenario-detail-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
+        .skill-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            border-color: rgba(0,0,0,0.1);
         }
 
-        .scenario-detail-image {
+        .skill-video {
             width: 100%;
             height: 180px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #fafafa;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
             position: relative;
             overflow: hidden;
         }
 
-        .scenario-detail-image::before {
-            content: '';
+        .skill-video img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .play-button {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary);
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(102,126,234,0.8) 0%, rgba(118,75,162,0.8) 100%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
 
-        .scenario-detail-content {
-            padding: 1.5rem;
+        .skill-info {
+            padding: 1rem;
+            text-align: center;
         }
 
-        .scenario-detail-title {
-            font-size: 1.2rem;
-            font-weight: 700;
+        .skill-title {
+            font-size: 1rem;
+            font-weight: 600;
             margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            letter-spacing: -0.01em;
+        }
+
+        .skill-description {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        /* Partnership Section */
+        .partnership-cards {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .partnership-card {
+            background: var(--bg-white);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            gap: 1rem;
+            transition: all 0.3s;
+        }
+
+        .partnership-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .partnership-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .partnership-content {
+            flex: 1;
+        }
+
+        .partnership-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            gap: 1rem;
+        }
+
+        .partnership-title {
+            font-size: 1.1rem;
+            font-weight: 700;
             color: var(--text-primary);
         }
 
-        .scenario-detail-subtitle {
+        .apply-btn {
+            padding: 0.5rem 1.25rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-weight: 600;
             font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
         }
 
-        .scenario-features {
+        .apply-btn:hover {
+            background: var(--primary-dark);
+            transform: scale(1.05);
+        }
+
+        .partnership-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+
+        .partnership-features {
+            list-style: none;
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
         }
 
-        .scenario-feature {
-            font-size: 0.85rem;
+        .partnership-features li {
             color: var(--text-secondary);
+            font-size: 0.9rem;
             padding-left: 1.25rem;
             position: relative;
         }
 
-        .scenario-feature::before {
-            content: "✓";
+        .partnership-features li::before {
+            content: "•";
             position: absolute;
             left: 0;
-            color: var(--success);
+            color: var(--primary);
             font-weight: bold;
+        }
+
+        /* News Feed */
+        .news-feed {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .news-item {
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 1rem;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            gap: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .news-item:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .news-content {
+            flex: 1;
+        }
+
+        .news-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            line-height: 1.5;
+        }
+
+        .news-date {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+        }
+
+        .news-image {
+            width: 100px;
+            height: 70px;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: var(--bg-light);
+        }
+
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         /* Bottom Navigation */
@@ -553,12 +695,13 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: var(--bg-white);
-            border-top: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            border-top: 1px solid rgba(0,0,0,0.08);
             display: flex;
             justify-content: space-around;
-            padding: 0.5rem 0;
-            box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
+            padding: 0.5rem 0 0.75rem 0;
+            box-shadow: 0 -1px 0 rgba(0,0,0,0.04);
             z-index: 1000;
         }
 
@@ -569,18 +712,33 @@
             gap: 0.25rem;
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 0.8rem;
+            font-size: 0.625rem;
             padding: 0.5rem 1rem;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.2s;
+            position: relative;
+            font-weight: 400;
+            letter-spacing: -0.01em;
         }
 
         .nav-item.active {
             color: var(--primary);
         }
 
+        .nav-item.active .nav-icon {
+            color: var(--primary);
+        }
+
         .nav-icon {
-            font-size: 1.5rem;
+            font-size: 1.75rem;
+            transition: all 0.2s;
+        }
+
+        .load-more {
+            text-align: center;
+            padding: 2rem 0;
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
         }
 
         /* Page Transitions */
@@ -606,30 +764,67 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
             .scenario-grid {
-                grid-template-columns: repeat(4, 1fr);
+                grid-template-columns: repeat(2, 1fr);  /* 手机端2列 */
             }
 
-            .category-section {
-                grid-template-columns: repeat(4, 1fr);
+            .promo-cards {
+                grid-template-columns: repeat(3, 1fr);
             }
 
-            .scenario-detail-grid {
-                grid-template-columns: repeat(1, 1fr);
+            .partnership-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .product-image {
+                height: 160px;
+            }
+
+            .language-switcher {
+                top: 70px;
+                right: 10px;
             }
         }
 
         @media (min-width: 769px) {
             .product-grid {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(4, 1fr);
+                max-width: 1200px;
             }
 
             .scenario-grid {
+                grid-template-columns: repeat(4, 1fr);  /* 桌面端4列 */
+            }
+
+            .skills-grid {
                 grid-template-columns: repeat(4, 1fr);
             }
 
-            .scenario-detail-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .product-image {
+                height: 240px;
+            }
+        }
+
+        /* 中等屏幕也强制4列 */
+        @media (min-width: 600px) and (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: repeat(4, 1fr) !important;
+                gap: 0.75rem;
+            }
+
+            .scenario-grid {
+                grid-template-columns: repeat(4, 1fr) !important;  /* 平板端4列 */
+                gap: 0.75rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(4, 1fr) !important;
+                gap: 0.75rem;
             }
         }
     </style>
@@ -637,7 +832,7 @@
 <body>
     <!-- Language Switcher -->
     <div class="language-switcher">
-        <button class="lang-btn" data-lang="zh" data-country="cn" title="中文">🇨🇳</button>
+        <button class="lang-btn" data-lang="zh" data-country="zh" title="中文">🇨🇳</button>
         <button class="lang-btn active" data-lang="en" data-country="uk" title="English (UK)">🇬🇧</button>
         <button class="lang-btn" data-lang="fr" data-country="fr" title="Français">🇫🇷</button>
         <button class="lang-btn" data-lang="de" data-country="de" title="Deutsch">🇩🇪</button>
@@ -649,18 +844,23 @@
     <div class="header">
         <div class="header-content">
             <div class="logo">
-                <img src="botshare-logo-new.png" alt="BotShare" class="logo-image">
+                <img src="botshare-logo.png" alt="BotShare" class="logo-image">
                 <div class="logo-text">
                     <span class="logo-main">BotShare</span>
                     <span class="logo-sub" data-i18n="header.subtitle">Europe • Powered by Agibot</span>
                 </div>
             </div>
-            <div class="header-actions">
-                <button class="login-btn" id="header-login-btn">
-                    <span data-i18n="header.login">登录</span>
+            <div class="header-actions" style="display: flex; gap: 1rem; align-items: center;">
+                <button class="icon-btn" style="font-size: 1.2rem; background: transparent; border: none; cursor: pointer; color: var(--text-primary);">
+                    🔍
                 </button>
-                <button class="icon-btn">🔍</button>
-                <button class="icon-btn">🛒</button>
+                <button class="icon-btn" data-i18n="header.login" style="padding: 0.6rem 1.5rem; background: var(--primary); color: white; border: none; border-radius: 980px; cursor: pointer; font-weight: 500; font-size: 0.95rem; min-width: 70px; transition: all 0.3s; box-shadow: 0 2px 8px rgba(0,113,227,0.25);">
+                    登录
+                </button>
+                <button class="icon-btn" style="font-size: 1.2rem; background: transparent; border: none; cursor: pointer; color: var(--text-primary); position: relative;">
+                    🛒
+                    <span style="position: absolute; top: -5px; right: -5px; background: red; color: white; border-radius: 50%; width: 18px; height: 18px; font-size: 0.7rem; display: flex; align-items: center; justify-content: center;">0</span>
+                </button>
             </div>
         </div>
     </div>
@@ -668,220 +868,405 @@
     <!-- HOME PAGE -->
     <div id="home-page" class="page active">
         <div class="main-content">
-            <!-- Hero Banner -->
-            <div class="hero-banner">
-                <div class="hero-content">
-                    <div class="hero-title" data-i18n="home.hero.title">租机器人就上擎天租</div>
-                    <div class="hero-subtitle" data-i18n="home.hero.subtitle">低成本 · 全场景 · 有保障</div>
-                    <div class="hero-tags">
-                        <span class="hero-tag" data-i18n="home.hero.tag1">专业服务</span>
-                        <span class="hero-tag" data-i18n="home.hero.tag2">快速响应</span>
-                        <span class="hero-tag" data-i18n="home.hero.tag3">品质保证</span>
+            <!-- Banner Carousel -->
+            <div class="banner-carousel">
+                <div class="banner-slide active">
+                    <img src="https://www.zhiyuan-robot.com/public/uploads/images/20260204/497242e579643b719264287d18684936.jpg" alt="Global Robot Event">
+                </div>
+                <div class="banner-slide">
+                    <img src="https://www.zhiyuan-robot.com/public/uploads/images/20260109/3ff155f9f673930d3095b44c145ef261.jpg" alt="Global Leader">
+                </div>
+                <div class="banner-slide">
+                    <img src="https://www.zhiyuan-robot.com/public/uploads/images/20260109/b9cdca6ddbfbf15bea0cddc2b5a177db.jpg" alt="Production Scale">
+                </div>
+                <div class="carousel-indicators">
+                    <span class="indicator active" data-slide="0"></span>
+                    <span class="indicator" data-slide="1"></span>
+                    <span class="indicator" data-slide="2"></span>
+                </div>
+            </div>
+
+            <!-- Promo Cards -->
+            <div class="promo-cards">
+                <div class="promo-card">
+                    <img src="https://www.zhiyuan-robot.com/public/uploads/images/20260113/532e2375f0789ba10b70cfd71777290d.jpg" alt="Yuanzheng A2">
+                </div>
+                <div class="promo-card">
+                    <img src="https://www.zhiyuan-robot.com/public/uploads/images/20260113/d594f58c5a06b3b5b11d4fa2277e16b2.jpg" alt="Genie G2">
+                </div>
+                <div class="promo-card">
+                    <img src="https://www.zhiyuan-robot.com/public/uploads/images/20260113/8a9f982124b93cb5561ed9f80a2bab37.jpg" alt="Lingxi X2">
+                </div>
+            </div>
+
+            <!-- CTA Banner -->
+            <div class="cta-banner">
+                <div class="cta-content">
+                    <h2 data-i18n="home.cta.title">Rent Robots on BotShare</h2>
+                    <p data-i18n="home.cta.subtitle">🤖 Your Premium Robot Partner in Europe</p>
+                </div>
+                <div class="cta-arrow">→</div>
+            </div>
+
+            <!-- 8 Scenarios Section -->
+            <div class="section-header">
+                <div>
+                    <span class="section-title" data-i18n="home.scenarios.title">热门场景</span>
+                    <span class="section-subtitle">#精选应用</span>
+                </div>
+            </div>
+
+            <div class="scenario-grid">
+                <!-- 1. Party活动 -->
+                <div class="scenario-card" style="background-image: url('images/party.jpg');">
+                    <div class="scenario-content">
+                        <div class="scenario-icon">🎉</div>
+                        <div class="scenario-title" data-i18n="scenarios.party">Party活动</div>
+                        <div class="scenario-subtitle" data-i18n="scenarios.party.subtitle">生日、圣诞等</div>
                     </div>
                 </div>
-                <div class="hero-robot">🤖</div>
-            </div>
-
-            <!-- Scenarios Section -->
-            <div class="scenario-section">
-                <div class="section-title" data-i18n="home.scenarios.title">热门场景</div>
-                <div class="scenario-grid" id="scenario-grid">
-                    <!-- Scenarios will be dynamically rendered -->
+                
+                <!-- 2. 展会 -->
+                <div class="scenario-card" style="background-image: url('images/exhibition.jpg');">
+                    <div class="scenario-content">
+                        <div class="scenario-icon">🏢</div>
+                        <div class="scenario-title" data-i18n="scenarios.exhibition">展会</div>
+                        <div class="scenario-subtitle" data-i18n="scenarios.exhibition.subtitle">企业展会</div>
+                    </div>
+                </div>
+                
+                <!-- 3. 团建 -->
+                <div class="scenario-card" style="background-image: url('images/team.jpg');">
+                    <div class="scenario-content">
+                        <div class="scenario-icon">🤝</div>
+                        <div class="scenario-title" data-i18n="scenarios.team">团建</div>
+                        <div class="scenario-subtitle" data-i18n="scenarios.team.subtitle">团队建设</div>
+                    </div>
+                </div>
+                
+                <!-- 4. 门店促销 -->
+                <div class="scenario-card" style="background-image: url('images/retail.jpg');">
+                    <div class="scenario-content">
+                        <div class="scenario-icon">🏪</div>
+                        <div class="scenario-title" data-i18n="scenarios.retail">门店促销</div>
+                        <div class="scenario-subtitle" data-i18n="scenarios.retail.subtitle">促销接待</div>
+                    </div>
+                </div>
+                
+                <!-- 5. 安防巡逻 -->
+                <div class="scenario-card" style="background-image: url('images/security.jpg');">
+                    <div class="scenario-content">
+                        <div class="scenario-icon">🛡️</div>
+                        <div class="scenario-title" data-i18n="scenarios.security">安防巡逻</div>
+                        <div class="scenario-subtitle" data-i18n="scenarios.security.subtitle">智能安防</div>
+                    </div>
+                </div>
+                
+                <!-- 6. 商演 -->
+                <div class="scenario-card" style="background-image: url('images/commercial.jpg');">
+                    <div class="scenario-content">
+                        <div class="scenario-icon">🎭</div>
+                        <div class="scenario-title" data-i18n="scenarios.commercial">商演</div>
+                        <div class="scenario-subtitle" data-i18n="scenarios.commercial.subtitle">商业演出</div>
+                    </div>
+                </div>
+                
+                <!-- 7. 直播带货 -->
+                <div class="scenario-card" style="background-image: url('images/livestream.jpg');">
+                    <div class="scenario-content">
+                        <div class="scenario-icon">📹</div>
+                        <div class="scenario-title" data-i18n="scenarios.livestream">直播带货</div>
+                        <div class="scenario-subtitle" data-i18n="scenarios.livestream.subtitle">网红直播</div>
+                    </div>
+                </div>
+                
+                <!-- 8. 定制服务 -->
+                <div class="scenario-card" style="background-image: url('images/custom.jpg');">
+                    <div class="scenario-content">
+                        <div class="scenario-icon">✨</div>
+                        <div class="scenario-title" data-i18n="scenarios.custom">定制服务</div>
+                        <div class="scenario-subtitle" data-i18n="scenarios.custom.subtitle">个性化方案</div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Category Buttons -->
-            <div class="category-section">
-                <button class="category-btn active" data-category="industry">
-                    <div class="category-icon">🏢</div>
-                    <div class="category-name" data-i18n="home.category.industry">行业应用</div>
-                </button>
-                <button class="category-btn" data-category="hot">
-                    <div class="category-icon">🔥</div>
-                    <div class="category-name" data-i18n="home.category.hot">热门品牌</div>
-                </button>
-                <button class="category-btn" data-category="skin">
-                    <div class="category-icon">👔</div>
-                    <div class="category-name" data-i18n="home.category.skin">皮肤道具</div>
-                </button>
-                <button class="category-btn" data-category="nearby">
-                    <div class="category-icon">📍</div>
-                    <div class="category-name" data-i18n="home.category.nearby">好玩周边</div>
-                </button>
-            </div>
-
-            <!-- Booking Section -->
-            <div class="booking-section">
-                <div class="booking-row">
-                    <input type="text" class="booking-input" data-i18n-placeholder="home.booking.location" placeholder="上海">
-                    <input type="date" class="booking-input" value="2026-02-10">
-                    <input type="date" class="booking-input" value="2026-02-11">
+            <!-- Recommend for Me Section -->
+            <div class="section-header">
+                <div>
+                    <span class="section-title" data-i18n="home.recommend.title">为您推荐</span>
+                    <span class="section-subtitle">Recommend for Me</span>
                 </div>
-                <button class="booking-btn" data-i18n="home.booking.button">一键帮我推荐</button>
             </div>
 
-            <!-- Products Section -->
-            <div class="section-title" data-i18n="home.products.title">为您推荐</div>
+            <div class="booking-section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 1.5rem; border-radius: 16px; margin-bottom: 2rem;">
+                <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                    <input type="text" placeholder="选择城市 / Select City" data-i18n-placeholder="home.booking.location" 
+                           style="flex: 1; padding: 0.8rem; border: none; border-radius: 8px; font-size: 0.9rem;">
+                    <input type="date" value="2026-02-10" 
+                           style="flex: 1; padding: 0.8rem; border: none; border-radius: 8px; font-size: 0.9rem;">
+                    <input type="date" value="2026-02-11" 
+                           style="flex: 1; padding: 0.8rem; border: none; border-radius: 8px; font-size: 0.9rem;">
+                </div>
+                <button data-i18n="home.booking.button" 
+                        style="width: 100%; padding: 1rem; background: white; color: #667eea; border: none; border-radius: 8px; font-weight: 600; font-size: 1rem; cursor: pointer;">
+                    一键帮我推荐
+                </button>
+            </div>
+
+
+            <!-- Robot Skills Section -->
+            <div class="section-header">
+                <div>
+                    <span class="section-title" data-i18n="skills.title">Robot Skills</span>
+                    <span class="section-subtitle">#Demonstrations</span>
+                </div>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-video">
+                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20260113/532e2375f0789ba10b70cfd71777290d.jpg" alt="Platform">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="skill-info">
+                        <div class="skill-title" data-i18n="skills.platform.title">Interactive Platform</div>
+                        <div class="skill-description" data-i18n="skills.platform.description">Applicable: Agibot X2, A2 Series</div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-video">
+                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20260113/8a9f982124b93cb5561ed9f80a2bab37.jpg" alt="Soul">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="skill-info">
+                        <div class="skill-title" data-i18n="skills.soul.title">Soul Platform</div>
+                        <div class="skill-description" data-i18n="skills.soul.description">Applicable: Agibot X2</div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-video">
+                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20250828/95d637abaec556ff7e079e2476938ae1.png" alt="Performance">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="skill-info">
+                        <div class="skill-title" data-i18n="skills.drum.title">Long Drum Dance</div>
+                        <div class="skill-description" data-i18n="skills.drum.description">Applicable: Agibot A2 Pro</div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-video">
+                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20250828/97dedd9e7f7535e97208483a4ce9819b.png" alt="Welcome">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="skill-info">
+                        <div class="skill-title" data-i18n="skills.welcome.title">Welcome Ceremony</div>
+                        <div class="skill-description" data-i18n="skills.welcome.description">Applicable: Agibot A2 Ultra</div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-video">
+                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20241227/2aad139da4f934098b097b36d99b3b74.png" alt="Festive">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="skill-info">
+                        <div class="skill-title" data-i18n="skills.festive.title">Festive Performance</div>
+                        <div class="skill-description" data-i18n="skills.festive.description">Applicable: Agibot Genie G1</div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-video">
+                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20251015/22e181d4e8d3c595aeec6c0b72790878.png" alt="Music">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="skill-info">
+                        <div class="skill-title" data-i18n="skills.music.title">Music Performance</div>
+                        <div class="skill-description" data-i18n="skills.music.description">Applicable: Full Product Series</div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-video">
+                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20250820/92ca73204183e700d2484e8db082f3ea.png" alt="Dance">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="skill-info">
+                        <div class="skill-title" data-i18n="skills.dance.title">Dynamic Dance</div>
+                        <div class="skill-description" data-i18n="skills.dance.description">Applicable: Agibot D1 Edu</div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-video">
+                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20250521/311a5e9a2962c03a0b40c79eb77a99e7.png" alt="Greeting">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="skill-info">
+                        <div class="skill-title" data-i18n="skills.greeting.title">Interactive Greeting</div>
+                        <div class="skill-description" data-i18n="skills.greeting.description">Applicable: Agibot X2</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hot Scenarios -->
+            <div class="section-header">
+                <div>
+                    <span class="section-title" data-i18n="home.section.title">Hot Robots</span>
+                    <span class="section-subtitle" data-i18n="home.section.subtitle">#Premium Selection</span>
+                </div>
+                <a href="#" class="more-link" data-i18n="home.section.more">More →</a>
+            </div>
+
             <div class="product-grid" id="product-grid">
-                <!-- Products will be dynamically rendered -->
+                <!-- Products will be dynamically rendered with correct prices -->
             </div>
         </div>
     </div>
 
-    <!-- ORDERS PAGE -->
-    <div id="orders-page" class="page">
+    <!-- COMMUNITY PAGE -->
+    <div id="community-page" class="page">
         <div class="main-content">
-            <div style="min-height: 80vh; display: flex; align-items: center; justify-content: center;">
-                <div style="text-align: center; max-width: 500px; width: 100%; padding: 2rem;">
-                    <img src="botshare-logo-new.png" alt="BotShare" style="width: 200px; margin-bottom: 2rem;">
-                    
-                    <!-- Login/Register Tabs -->
-                    <div style="display: flex; gap: 1rem; margin-bottom: 2rem; border-bottom: 2px solid var(--border);">
-                        <button class="login-tab active" data-tab="login-orders" style="flex: 1; padding: 1rem; border: none; background: transparent; font-size: 1.1rem; font-weight: 600; color: var(--text-secondary); cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.3s;">
-                            <span data-i18n="login.tab.login">登录</span>
-                        </button>
-                        <button class="login-tab" data-tab="register-orders" style="flex: 1; padding: 1rem; border: none; background: transparent; font-size: 1.1rem; font-weight: 600; color: var(--text-secondary); cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.3s;">
-                            <span data-i18n="login.tab.register">注册</span>
-                        </button>
+            <div class="section-header" style="margin-top: 1.5rem;">
+                <div class="section-title" data-i18n="community.title">Partnership Opportunities</div>
+            </div>
+
+            <div class="partnership-cards">
+                <div class="partnership-card">
+                    <div class="partnership-icon">👔</div>
+                    <div class="partnership-content">
+                        <div class="partnership-header">
+                            <div class="partnership-title" data-i18n="community.rental.title">Rental Service Provider</div>
+                            <button class="apply-btn" data-i18n="community.rental.button">Apply Now</button>
+                        </div>
+                        <div class="partnership-description" data-i18n="community.rental.description">If you have robot equipment resources and want to expand the rental business across Europe, we provide high-quality customer leads and standardized operation support.</div>
+                        <ul class="partnership-features">
+                            <li data-i18n="community.rental.feature1">Platform traffic support</li>
+                            <li data-i18n="community.rental.feature2">Standardized operation system</li>
+                            <li data-i18n="community.rental.feature3">Professional technical support</li>
+                        </ul>
                     </div>
-                    
-                    <!-- Method Switcher -->
-                    <div style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem; background: var(--bg-light); padding: 0.25rem; border-radius: 12px;">
-                        <button class="method-btn active" data-method="phone" style="flex: 1; padding: 0.75rem; border: none; background: white; border-radius: 10px; font-weight: 600; cursor: pointer; transition: all 0.3s; box-shadow: var(--shadow-sm);">
-                            📱 <span data-i18n="login.method.phone">手机号</span>
-                        </button>
-                        <button class="method-btn" data-method="email" style="flex: 1; padding: 0.75rem; border: none; background: transparent; border-radius: 10px; font-weight: 600; cursor: pointer; transition: all 0.3s;">
-                            ✉️ <span data-i18n="login.method.email">邮箱</span>
-                        </button>
+                </div>
+
+                <div class="partnership-card">
+                    <div class="partnership-icon" style="background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);">🏭</div>
+                    <div class="partnership-content">
+                        <div class="partnership-header">
+                            <div class="partnership-title" data-i18n="community.manufacturer.title">Robot Manufacturer</div>
+                            <button class="apply-btn" data-i18n="community.manufacturer.button">Inquire</button>
+                        </div>
+                        <div class="partnership-description" data-i18n="community.manufacturer.description">Companies engaged in humanoid robot production, looking to expand sales channels, enhance brand exposure, and conduct technical R&D cooperation.</div>
+                        <ul class="partnership-features">
+                            <li data-i18n="community.manufacturer.feature1">Production and manufacturing</li>
+                            <li data-i18n="community.manufacturer.feature2">Channel expansion</li>
+                            <li data-i18n="community.manufacturer.feature3">Technical cooperation</li>
+                        </ul>
                     </div>
-                    
-                    <!-- Login Content -->
-                    <div class="login-content" id="login-orders-content">
-                        <input type="tel" class="booking-input" data-i18n-placeholder="login.phone.placeholder" placeholder="请输入手机号" style="margin-bottom: 1rem; text-align: center; font-size: 1rem;">
-                        
-                        <button class="booking-btn" style="margin-bottom: 1rem;">
-                            <span data-i18n="login.button.quick">一键登录</span>
-                        </button>
-                        
-                        <button class="booking-btn" style="background: white; color: var(--primary); border: 2px solid var(--primary); margin-bottom: 2rem;">
-                            <span data-i18n="login.button.verify">验证码登录</span>
-                        </button>
+                </div>
+
+                <div class="partnership-card">
+                    <div class="partnership-icon" style="background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);">💡</div>
+                    <div class="partnership-content">
+                        <div class="partnership-header">
+                            <div class="partnership-title" data-i18n="community.creator.title">Content Creator</div>
+                            <button class="apply-btn" data-i18n="community.creator.button">Join Us</button>
+                        </div>
+                        <div class="partnership-description" data-i18n="community.creator.description">If you are skilled at developing robot applications, we provide display and sales platforms for skill packages, allowing creativity to become value.</div>
+                        <ul class="partnership-features">
+                            <li data-i18n="community.creator.feature1">Skill pack sales platform</li>
+                            <li data-i18n="community.creator.feature2">Revenue sharing mechanism</li>
+                            <li data-i18n="community.creator.feature3">Technical exchange community</li>
+                        </ul>
                     </div>
-                    
-                    <!-- Register Content -->
-                    <div class="login-content" id="register-orders-content" style="display: none;">
-                        <input type="tel" class="booking-input" data-i18n-placeholder="login.phone.placeholder" placeholder="请输入手机号" style="margin-bottom: 1rem; text-align: center; font-size: 1rem;">
-                        
-                        <input type="text" class="booking-input" data-i18n-placeholder="login.code.placeholder" placeholder="请输入验证码" style="margin-bottom: 0.5rem; text-align: center; font-size: 1rem;">
-                        
-                        <button style="background: transparent; border: none; color: var(--primary); cursor: pointer; font-size: 0.9rem; margin-bottom: 1rem;">
-                            <span data-i18n="login.send.code">发送验证码</span>
-                        </button>
-                        
-                        <button class="booking-btn" style="margin-bottom: 2rem;">
-                            <span data-i18n="login.button.register">立即注册</span>
-                        </button>
-                    </div>
-                    
-                    <div style="font-size: 0.85rem; color: var(--text-secondary); display: flex; align-items: center; justify-content: center; gap: 0.5rem; flex-wrap: wrap;">
-                        <input type="checkbox" id="agree-terms-orders" style="width: 18px; height: 18px;">
-                        <label for="agree-terms-orders" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.25rem;">
-                            <span data-i18n="login.agree.prefix">我已阅读并同意</span>
-                            <a href="#" style="color: var(--primary); text-decoration: none;" data-i18n="login.terms">《擎天租用户服务协议》</a>
-                            <a href="#" style="color: var(--primary); text-decoration: none;" data-i18n="login.privacy">《擎天租隐私政策》</a>
-                        </label>
+                </div>
+
+                <div class="partnership-card">
+                    <div class="partnership-icon" style="background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);">🎬</div>
+                    <div class="partnership-content">
+                        <div class="partnership-header">
+                            <div class="partnership-title" data-i18n="community.influencer.title">Influencer / KOL</div>
+                            <button class="apply-btn" data-i18n="community.influencer.button">Collaborate</button>
+                        </div>
+                        <div class="partnership-description" data-i18n="community.influencer.description">If you are an influential content creator, we provide high-quality robot performance resources to help elevate your content creation.</div>
+                        <ul class="partnership-features">
+                            <li data-i18n="community.influencer.feature1">Free robot support</li>
+                            <li data-i18n="community.influencer.feature2">Business cooperation opportunities</li>
+                            <li data-i18n="community.influencer.feature3">Traffic exposure support</li>
+                        </ul>
                     </div>
                 </div>
             </div>
+
+            <div class="section-header" style="margin-top: 2.5rem;">
+                <div class="section-title" data-i18n="community.news.title">Latest News</div>
+            </div>
+
+            <div class="news-feed">
+                <div class="news-item">
+                    <div class="news-content">
+                        <div class="news-title" data-i18n="community.news.item1.title">Agibot Holds First European Launch Event in Italy</div>
+                        <div class="news-date">2026-02-02</div>
+                    </div>
+                    <div class="news-image">
+                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20260202/5be04d73dd59232366d5f173f1d52e2b.jpg" alt="Italy Event">
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-content">
+                        <div class="news-title" data-i18n="community.news.item2.title">15x Speed Boost! Agibot Breaks VLA On-Device Deployment Barriers</div>
+                        <div class="news-date">2026-02-02</div>
+                    </div>
+                    <div class="news-image">
+                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20260202/313180dc13f639f90a0178213cc1ae71.png" alt="Tech News">
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-content">
+                        <div class="news-title" data-i18n="community.news.item3.title">Agibot Debuts at UK BETT Exhibition</div>
+                        <div class="news-date">2026-01-30</div>
+                    </div>
+                    <div class="news-image">
+                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20260130/01fbd5294385cb9743e3b81e53fda459.png" alt="BETT">
+                    </div>
+                </div>
+            </div>
+
+            <div class="load-more" data-i18n="community.news.nomore">No more content</div>
         </div>
     </div>
+
 
     <!-- PROFILE PAGE -->
     <div id="profile-page" class="page">
         <div class="main-content">
-            <div style="min-height: 80vh; display: flex; align-items: center; justify-content: center;">
-                <div style="text-align: center; max-width: 500px; width: 100%; padding: 2rem;">
-                    <img src="botshare-logo-new.png" alt="BotShare" style="width: 200px; margin-bottom: 2rem;">
-                    
-                    <!-- Login/Register Tabs -->
-                    <div style="display: flex; gap: 1rem; margin-bottom: 2rem; border-bottom: 2px solid var(--border);">
-                        <button class="login-tab active" data-tab="login-profile" style="flex: 1; padding: 1rem; border: none; background: transparent; font-size: 1.1rem; font-weight: 600; color: var(--text-secondary); cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.3s;">
-                            <span data-i18n="login.tab.login">登录</span>
-                        </button>
-                        <button class="login-tab" data-tab="register-profile" style="flex: 1; padding: 1rem; border: none; background: transparent; font-size: 1.1rem; font-weight: 600; color: var(--text-secondary); cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.3s;">
-                            <span data-i18n="login.tab.register">注册</span>
-                        </button>
-                    </div>
-                    
-                    <!-- Method Switcher -->
-                    <div style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem; background: var(--bg-light); padding: 0.25rem; border-radius: 12px;">
-                        <button class="method-btn active" data-method="phone" style="flex: 1; padding: 0.75rem; border: none; background: white; border-radius: 10px; font-weight: 600; cursor: pointer; transition: all 0.3s; box-shadow: var(--shadow-sm);">
-                            📱 <span data-i18n="login.method.phone">手机号</span>
-                        </button>
-                        <button class="method-btn" data-method="email" style="flex: 1; padding: 0.75rem; border: none; background: transparent; border-radius: 10px; font-weight: 600; cursor: pointer; transition: all 0.3s;">
-                            ✉️ <span data-i18n="login.method.email">邮箱</span>
-                        </button>
-                    </div>
-                    
-                    <!-- Login Content -->
-                    <div class="login-content" id="login-profile-content">
-                        <input type="tel" class="booking-input" data-i18n-placeholder="login.phone.placeholder" placeholder="请输入手机号" style="margin-bottom: 1rem; text-align: center; font-size: 1rem;">
-                        
-                        <button class="booking-btn" style="margin-bottom: 1rem;">
-                            <span data-i18n="login.button.quick">一键登录</span>
-                        </button>
-                        
-                        <button class="booking-btn" style="background: white; color: var(--primary); border: 2px solid var(--primary); margin-bottom: 2rem;">
-                            <span data-i18n="login.button.verify">验证码登录</span>
-                        </button>
-                    </div>
-                    
-                    <!-- Register Content -->
-                    <div class="login-content" id="register-profile-content" style="display: none;">
-                        <input type="tel" class="booking-input" data-i18n-placeholder="login.phone.placeholder" placeholder="请输入手机号" style="margin-bottom: 1rem; text-align: center; font-size: 1rem;">
-                        
-                        <input type="text" class="booking-input" data-i18n-placeholder="login.code.placeholder" placeholder="请输入验证码" style="margin-bottom: 0.5rem; text-align: center; font-size: 1rem;">
-                        
-                        <button style="background: transparent; border: none; color: var(--primary); cursor: pointer; font-size: 0.9rem; margin-bottom: 1rem;">
-                            <span data-i18n="login.send.code">发送验证码</span>
-                        </button>
-                        
-                        <button class="booking-btn" style="margin-bottom: 2rem;">
-                            <span data-i18n="login.button.register">立即注册</span>
-                        </button>
-                    </div>
-                    
-                    <div style="font-size: 0.85rem; color: var(--text-secondary); display: flex; align-items: center; justify-content: center; gap: 0.5rem; flex-wrap: wrap;">
-                        <input type="checkbox" id="agree-terms-profile" style="width: 18px; height: 18px;">
-                        <label for="agree-terms-profile" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.25rem;">
-                            <span data-i18n="login.agree.prefix">我已阅读并同意</span>
-                            <a href="#" style="color: var(--primary); text-decoration: none;" data-i18n="login.terms">《擎天租用户服务协议》</a>
-                            <a href="#" style="color: var(--primary); text-decoration: none;" data-i18n="login.privacy">《擎天租隐私政策》</a>
-                        </label>
+            <div style="text-align: center; padding: 4rem 2rem;">
+                <div style="font-size: 5rem; margin-bottom: 1rem;">👤</div>
+                <div style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;" data-i18n="profile.title">My Profile</div>
+                <div style="color: var(--text-secondary); margin-bottom: 2rem;" data-i18n="profile.subtitle">Login to access your orders and preferences</div>
+                <button class="apply-btn" style="padding: 0.75rem 2rem; font-size: 1rem;" data-i18n="profile.signin">Sign In</button>
+                
+                <div style="margin-top: 3rem; text-align: left; max-width: 500px; margin-left: auto; margin-right: auto;">
+                    <h3 style="margin-bottom: 1rem; color: var(--text-primary);" data-i18n="profile.quicklinks">Quick Links</h3>
+                    <div style="display: grid; gap: 0.75rem;">
+                        <div style="background: var(--bg-white); padding: 1rem; border-radius: 8px; box-shadow: var(--shadow-sm);">
+                            <div style="font-weight: 600; margin-bottom: 0.25rem;" data-i18n="profile.orders.title">📋 My Orders</div>
+                            <div style="font-size: 0.85rem; color: var(--text-secondary);" data-i18n="profile.orders.description">View rental history and current orders</div>
+                        </div>
+                        <div style="background: var(--bg-white); padding: 1rem; border-radius: 8px; box-shadow: var(--shadow-sm);">
+                            <div style="font-weight: 600; margin-bottom: 0.25rem;" data-i18n="profile.favorites.title">⭐ Favorites</div>
+                            <div style="font-size: 0.85rem; color: var(--text-secondary);" data-i18n="profile.favorites.description">Saved robots and collections</div>
+                        </div>
+                        <div style="background: var(--bg-white); padding: 1rem; border-radius: 8px; box-shadow: var(--shadow-sm);">
+                            <div style="font-weight: 600; margin-bottom: 0.25rem;" data-i18n="profile.settings.title">⚙️ Settings</div>
+                            <div style="font-size: 0.85rem; color: var(--text-secondary);" data-i18n="profile.settings.description">Manage account and preferences</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- CART PAGE -->
-    <div id="cart-page" class="page">
-        <div class="main-content">
-            <div class="section-title" style="margin-top: 1.5rem;" data-i18n="cart.title">购物车</div>
-            
-            <div style="text-align: center; padding: 4rem 2rem;">
-                <div style="font-size: 5rem; margin-bottom: 1rem;">🛒</div>
-                <div style="font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-secondary);" data-i18n="cart.empty">购物车还是空的</div>
-                <div style="color: var(--text-tertiary); margin-bottom: 2rem;" data-i18n="cart.empty.subtitle">快去首页选购心仪的机器人吧!</div>
-                <button class="booking-btn" style="max-width: 300px; margin: 0 auto;" onclick="document.querySelector('[data-page=home-page]').click()">
-                    <span data-i18n="cart.browse">去逛逛</span>
-                </button>
-            </div>
-
-            <!-- 8大场景快捷入口 -->
-            <div class="section-title" data-i18n="cart.scenarios">热门场景</div>
-            <div class="scenario-detail-grid" id="cart-scenario-grid">
-                <!-- Scenario details will be dynamically rendered -->
             </div>
         </div>
     </div>
@@ -890,467 +1275,754 @@
     <div class="bottom-nav">
         <div class="nav-item active" data-page="home-page">
             <div class="nav-icon">🏠</div>
-            <div data-i18n="nav.home">首页</div>
+            <div data-i18n="nav.home">Home</div>
         </div>
-        <div class="nav-item" data-page="cart-page">
-            <div class="nav-icon">🛒</div>
-            <div data-i18n="nav.cart">购物车</div>
-        </div>
-        <div class="nav-item" data-page="orders-page">
-            <div class="nav-icon">📋</div>
-            <div data-i18n="nav.orders">订单</div>
+        <div class="nav-item" data-page="community-page">
+            <div class="nav-icon">🔄</div>
+            <div data-i18n="nav.community">Community</div>
         </div>
         <div class="nav-item" data-page="profile-page">
             <div class="nav-icon">👤</div>
-            <div data-i18n="nav.profile">我的</div>
+            <div data-i18n="nav.profile">Profile</div>
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next/21.10.0/i18next.min.js"></script>
     <script>
-        // Scenarios data
-        const scenarios = [
-            { id: 'party', iconKey: '🎉', nameKey: 'scenarios.party', subtitleKey: 'scenarios.party.subtitle' },
-            { id: 'exhibition', iconKey: '🏢', nameKey: 'scenarios.exhibition', subtitleKey: 'scenarios.exhibition.subtitle' },
-            { id: 'team', iconKey: '🤝', nameKey: 'scenarios.team', subtitleKey: 'scenarios.team.subtitle' },
-            { id: 'retail', iconKey: '🏪', nameKey: 'scenarios.retail', subtitleKey: 'scenarios.retail.subtitle' },
-            { id: 'security', iconKey: '🛡️', nameKey: 'scenarios.security', subtitleKey: 'scenarios.security.subtitle' },
-            { id: 'commercial', iconKey: '🎭', nameKey: 'scenarios.commercial', subtitleKey: 'scenarios.commercial.subtitle' },
-            { id: 'livestream', iconKey: '📹', nameKey: 'scenarios.livestream', subtitleKey: 'scenarios.livestream.subtitle' },
-            { id: 'custom', iconKey: '✨', nameKey: 'scenarios.custom', subtitleKey: 'scenarios.custom.subtitle' }
-        ];
-
-        // Products data
+        // Product data with base USD prices (reference)
         const products = [
             {
-                id: 'newcomer',
-                nameKey: 'products.newcomer.name',
-                labelKey: 'products.newcomer.label',
+                id: 'x2',
+                nameKey: 'products.x2.name',
+                labelKey: 'products.x2.label',
                 image: 'https://www.zhiyuan-robot.com/public/uploads/images/20250521/311a5e9a2962c03a0b40c79eb77a99e7.png',
-                basePrice: 200
+                basePrice: 986
             },
             {
-                id: 'dance',
-                nameKey: 'products.dance.name',
-                labelKey: 'products.dance.label',
-                image: 'https://www.zhiyuan-robot.com/public/uploads/images/20260204/497242e579643b719264287d18684936.jpg',
-                basePrice: 999
+                id: 'a2ultra',
+                nameKey: 'products.a2ultra.name',
+                labelKey: 'products.a2ultra.label',
+                image: 'https://www.zhiyuan-robot.com/public/uploads/images/20250828/97dedd9e7f7535e97208483a4ce9819b.png',
+                basePrice: 2000
             },
             {
-                id: 'festival',
-                nameKey: 'products.festival.name',
-                labelKey: 'products.festival.label',
+                id: 'a2pro',
+                nameKey: 'products.a2pro.name',
+                labelKey: 'products.a2pro.label',
                 image: 'https://www.zhiyuan-robot.com/public/uploads/images/20250828/95d637abaec556ff7e079e2476938ae1.png',
-                basePrice: 999
+                basePrice: 1644
             },
             {
-                id: 'dragon',
-                nameKey: 'products.dragon.name',
-                labelKey: 'products.dragon.label',
-                image: 'https://www.zhiyuan-robot.com/public/uploads/images/20260113/532e2375f0789ba10b70cfd71777290d.jpg',
-                basePrice: 899
+                id: 'd1ultra',
+                nameKey: 'products.d1ultra.name',
+                labelKey: 'products.d1ultra.label',
+                image: 'https://www.zhiyuan-robot.com/public/uploads/images/20250710/fdf2ff569909f72a46e82034eabfcf3e.png',
+                basePrice: 136
+            },
+            {
+                id: 'd1edu',
+                nameKey: 'products.d1edu.name',
+                labelKey: 'products.d1edu.label',
+                image: 'https://www.zhiyuan-robot.com/public/uploads/images/20250820/92ca73204183e700d2484e8db082f3ea.png',
+                basePrice: 136
+            },
+            {
+                id: 'g2',
+                nameKey: 'products.g2.name',
+                labelKey: 'products.g2.label',
+                image: 'https://www.zhiyuan-robot.com/public/uploads/images/20251015/22e181d4e8d3c595aeec6c0b72790878.png',
+                basePrice: 2400
+            },
+            {
+                id: 'g1',
+                nameKey: 'products.g1.name',
+                labelKey: 'products.g1.label',
+                image: 'https://www.zhiyuan-robot.com/public/uploads/images/20241227/2aad139da4f934098b097b36d99b3b74.png',
+                basePrice: 1800
+            },
+            {
+                id: 'x1',
+                nameKey: 'products.x1.name',
+                labelKey: 'products.x1.label',
+                image: 'https://www.zhiyuan-robot.com/public/uploads/images/20250115/88d888acd3e86c6c404fd0f6f4f72c85.png',
+                basePrice: 1200
             }
         ];
 
-        // Currency configuration (中文使用欧元)
+        // Currency configuration (based on iPhone pricing strategy)
         const currencyConfig = {
-            cn: { symbol: '€', rate: 1.0, multiplier: 1.0 },
-            uk: { symbol: '£', rate: 0.85, multiplier: 1.0 },
-            fr: { symbol: '€', rate: 1.0, multiplier: 1.0 },
-            de: { symbol: '€', rate: 1.0, multiplier: 0.99 },
-            it: { symbol: '€', rate: 1.0, multiplier: 1.02 },
-            es: { symbol: '€', rate: 1.0, multiplier: 1.01 }
+            zh: {
+                symbol: '€',
+                rate: 1.0,
+                multiplier: 1.0 // China uses EUR for European pricing
+            },
+            uk: {
+                symbol: '£',
+                rate: 0.85, // GBP rate
+                multiplier: 1.0 // UK base pricing
+            },
+            fr: {
+                symbol: '€',
+                rate: 1.0,
+                multiplier: 1.0 // France uses EUR
+            },
+            de: {
+                symbol: '€',
+                rate: 1.0,
+                multiplier: 0.99 // Germany slightly cheaper
+            },
+            it: {
+                symbol: '€',
+                rate: 1.0,
+                multiplier: 1.02 // Italy slightly more expensive (higher VAT)
+            },
+            es: {
+                symbol: '€',
+                rate: 1.0,
+                multiplier: 1.01 // Spain middle ground
+            }
         };
 
-        // Translations
+        // Translations (继续使用之前的翻译,这里简化显示)
         const translations = {
             zh: {
                 "header.subtitle": "欧洲 • Powered by Agibot",
                 "header.login": "登录",
-                "home.hero.title": "租机器人就上擎天租",
-                "home.hero.subtitle": "低成本 · 全场景 · 有保障",
-                "home.hero.tag1": "专业服务",
-                "home.hero.tag2": "快速响应",
-                "home.hero.tag3": "品质保证",
+                "home.cta.title": "租机器人就上擎天租",
+                "home.cta.subtitle": "🤖 您在欧洲的优质机器人伙伴",
+                "home.section.title": "热门机器人",
+                "home.section.subtitle": "#精选推荐",
+                "home.section.more": "查看更多 →",
                 "home.scenarios.title": "热门场景",
-                "home.category.industry": "行业应用",
-                "home.category.hot": "热门品牌",
-                "home.category.skin": "皮肤道具",
-                "home.category.nearby": "好玩周边",
+                "home.recommend.title": "为您推荐",
                 "home.booking.location": "选择城市",
                 "home.booking.button": "一键帮我推荐",
-                "home.products.title": "为您推荐",
                 "scenarios.party": "Party活动",
-                "scenarios.party.subtitle": "生日、圣诞、万圣节等",
+                "scenarios.party.subtitle": "生日、圣诞等",
                 "scenarios.exhibition": "展会",
-                "scenarios.exhibition.subtitle": "企业展会、产品发布",
+                "scenarios.exhibition.subtitle": "企业展会",
                 "scenarios.team": "团建",
-                "scenarios.team.subtitle": "团队建设、公司活动",
+                "scenarios.team.subtitle": "团队建设",
                 "scenarios.retail": "门店促销",
-                "scenarios.retail.subtitle": "促销、前台接待",
+                "scenarios.retail.subtitle": "促销接待",
                 "scenarios.security": "安防巡逻",
-                "scenarios.security.subtitle": "智能安防、巡逻监控",
+                "scenarios.security.subtitle": "智能安防",
                 "scenarios.commercial": "商演",
-                "scenarios.commercial.subtitle": "商业演出、品牌活动",
+                "scenarios.commercial.subtitle": "商业演出",
                 "scenarios.livestream": "直播带货",
-                "scenarios.livestream.subtitle": "网红、名人直播",
+                "scenarios.livestream.subtitle": "网红直播",
                 "scenarios.custom": "定制服务",
-                "scenarios.custom.subtitle": "个性化定制方案",
-                "products.newcomer.name": "新人专享 - 首单立减€200",
-                "products.newcomer.label": "新人专享",
-                "products.dance.name": "【机器人奇妙夜】解锁同款舞蹈",
-                "products.dance.label": "限时特惠",
-                "products.festival.name": "【服务商专享租赁】福利小店",
-                "products.festival.label": "商家推荐",
-                "products.dragon.name": "【奇妙周末】智元超热赤焰龙",
-                "products.dragon.label": "热门推荐",
-                "community.title": "应用场景",
-                "cart.title": "购物车",
-                "cart.empty": "购物车还是空的",
-                "cart.empty.subtitle": "快去首页选购心仪的机器人吧!",
-                "cart.browse": "去逛逛",
-                "cart.scenarios": "热门场景",
-                "login.tab.login": "登录",
-                "login.tab.register": "注册",
-                "login.method.phone": "手机号",
-                "login.method.email": "邮箱",
-                "login.phone.placeholder": "请输入手机号",
-                "login.email.placeholder": "请输入邮箱",
-                "login.code.placeholder": "请输入验证码",
-                "login.button.quick": "一键登录",
-                "login.button.verify": "验证码登录",
-                "login.button.register": "立即注册",
-                "login.send.code": "发送验证码",
-                "login.agree.prefix": "我已阅读并同意",
-                "login.terms": "《擎天租用户服务协议》",
-                "login.privacy": "《擎天租隐私政策》",
+                "scenarios.custom.subtitle": "个性化方案",
+                "products.x2.name": "智元灵犀X2青春版",
+                "products.x2.label": "畅销款",
+                "products.a2ultra.name": "智元远征A2旗舰版",
+                "products.a2ultra.label": "高端款",
+                "products.a2pro.name": "智元远征A2青春版",
+                "products.a2pro.label": "热门款",
+                "products.d1ultra.name": "智元酷宝D1 Ultra",
+                "products.d1ultra.label": "性价比之选",
+                "products.d1edu.name": "智元酷宝D1 Pro/Edu",
+                "products.d1edu.label": "教育版",
+                "products.g2.name": "智元精灵G2 AI机器人",
+                "products.g2.label": "工业级",
+                "products.g1.name": "智元精灵G1 AI机器人",
+                "products.g1.label": "AI智能",
+                "products.x1.name": "智元灵犀X1开源版",
+                "products.x1.label": "开发者",
+                "community.title": "社区",
+                "community.rental.title": "租赁服务商",
+                "community.rental.button": "立即申请",
+                "community.rental.description": "通过我们的平台支持,在欧洲扩展您的租赁业务。",
+                "community.rental.feature1": "平台流量支持",
+                "community.rental.feature2": "标准化运营",
+                "community.rental.feature3": "技术支持",
+                "community.manufacturer.title": "机器人租转购",
+                "community.manufacturer.button": "了解详情",
+                "community.manufacturer.description": "租金可抵扣购买价格,灵活的租赁转购买方案。",
+                "community.manufacturer.feature1": "租金抵扣",
+                "community.manufacturer.feature2": "灵活付款",
+                "community.manufacturer.feature3": "优先购买权",
+                "community.creator.title": "定制化开发",
+                "community.creator.button": "咨询定制",
+                "community.creator.description": "根据您的需求定制专属机器人解决方案。",
+                "community.creator.feature1": "功能定制",
+                "community.creator.feature2": "品牌定制",
+                "community.creator.feature3": "技术支持",
+                "community.influencer.title": "网红 / KOL",
+                "community.influencer.button": "合作",
+                "community.influencer.description": "获取优质机器人进行内容创作。",
+                "community.influencer.feature1": "免费机器人支持",
+                "community.influencer.feature2": "商业机会",
+                "community.influencer.feature3": "曝光支持",
+                "community.news.title": "最新动态",
+                "community.news.item1.title": "智元首次欧洲发布会在意大利举行",
+                "community.news.item2.title": "15倍速提升！VLA部署突破",
+                "community.news.item3.title": "智元亮相英国BETT展览会",
+                "community.news.nomore": "没有更多内容",
+                "community.news.item1.description": "智元机器人正式进军欧洲市场，首站选择意大利米兰。",
+                "community.news.item2.description": "视觉-语言-行动模型部署效率提升15倍，实时响应成为可能。",
+                "community.news.item3.title.full": "智元机器人亮相英国伦敦BETT教育科技展",
+                "community.news.item3.description": "智元携多款教育机器人产品参展BETT 2026。",
+                "skills.title": "技能市场",
+                "skills.subtitle": "探索机器人能力扩展",
+                "skills.search.placeholder": "搜索技能包...",
+                "skills.category.all": "全部",
+                "skills.category.education": "教育",
+                "skills.category.entertainment": "娱乐",
+                "skills.category.business": "商业",
+                "skills.dance.title": "舞蹈表演",
+                "skills.dance.description": "适用于酷宝D1 Edu",
+                "skills.greeting.title": "互动问候",
+                "skills.greeting.description": "适用于灵犀X2",
+                "skills.loadmore": "加载更多",
+                "profile.title": "我的",
+                "profile.subtitle": "登录以访问订单和偏好设置",
+                "profile.signin": "登录",
+                "profile.quicklinks": "快捷链接",
+                "profile.orders.title": "📋 我的订单",
+                "profile.orders.description": "查看租赁历史",
+                "profile.favorites.title": "⭐ 收藏夹",
+                "profile.favorites.description": "已保存的机器人",
+                "profile.settings.title": "⚙️ 设置",
+                "profile.settings.description": "账户设置",
                 "nav.home": "首页",
-                "nav.cart": "购物车",
-                "nav.orders": "订单",
+                "nav.community": "社区",
+                "nav.skills": "技能",
                 "nav.profile": "我的"
             },
             en: {
                 "header.subtitle": "Europe • Powered by Agibot",
                 "header.login": "Login",
-                "home.hero.title": "Rent Robots on BotShare",
-                "home.hero.subtitle": "Low Cost · All Scenarios · Guaranteed",
-                "home.hero.tag1": "Professional",
-                "home.hero.tag2": "Fast Response",
-                "home.hero.tag3": "Quality Assured",
+                "home.cta.title": "Rent Robots on BotShare",
+                "home.cta.subtitle": "🤖 Your Premium Robot Partner in Europe",
+                "home.section.title": "Hot Robots",
+                "home.section.subtitle": "#Premium Selection",
+                "home.section.more": "More →",
                 "home.scenarios.title": "Popular Scenarios",
-                "home.category.industry": "Industries",
-                "home.category.hot": "Hot Brands",
-                "home.category.skin": "Costumes",
-                "home.category.nearby": "Nearby Fun",
+                "home.recommend.title": "Recommend for Me",
                 "home.booking.location": "Select City",
                 "home.booking.button": "Recommend for Me",
-                "home.products.title": "Recommended",
                 "scenarios.party": "Party Events",
-                "scenarios.party.subtitle": "Birthday, Christmas, Halloween",
+                "scenarios.party.subtitle": "Birthday, Christmas",
                 "scenarios.exhibition": "Exhibitions",
-                "scenarios.exhibition.subtitle": "Corporate events, launches",
+                "scenarios.exhibition.subtitle": "Corporate Events",
                 "scenarios.team": "Team Building",
-                "scenarios.team.subtitle": "Company activities",
+                "scenarios.team.subtitle": "Team Activities",
                 "scenarios.retail": "Retail",
-                "scenarios.retail.subtitle": "Promotion, reception",
+                "scenarios.retail.subtitle": "Promotion",
                 "scenarios.security": "Security",
-                "scenarios.security.subtitle": "Patrol, monitoring",
+                "scenarios.security.subtitle": "Smart Security",
                 "scenarios.commercial": "Shows",
-                "scenarios.commercial.subtitle": "Brand events",
+                "scenarios.commercial.subtitle": "Commercial Shows",
                 "scenarios.livestream": "Livestream",
-                "scenarios.livestream.subtitle": "Influencer, celebrity streams",
+                "scenarios.livestream.subtitle": "Influencer Live",
                 "scenarios.custom": "Custom",
-                "scenarios.custom.subtitle": "Personalized solutions",
-                "products.newcomer.name": "New User Special - Save €200",
-                "products.newcomer.label": "New User",
-                "products.dance.name": "Robot Dance Night Special",
-                "products.dance.label": "Limited Time",
-                "products.festival.name": "Vendor Exclusive Rental Deal",
-                "products.festival.label": "Merchant",
-                "products.dragon.name": "Weekend Special - Flame Dragon",
-                "products.dragon.label": "Hot",
-                "community.title": "Application Scenarios",
-                "cart.title": "Shopping Cart",
-                "cart.empty": "Your cart is empty",
-                "cart.empty.subtitle": "Browse our robots on the home page!",
-                "cart.browse": "Start Shopping",
-                "cart.scenarios": "Popular Scenarios",
-                "login.tab.login": "Login",
-                "login.tab.register": "Register",
-                "login.method.phone": "Phone",
-                "login.method.email": "Email",
-                "login.phone.placeholder": "Enter phone number",
-                "login.email.placeholder": "Enter email address",
-                "login.code.placeholder": "Enter verification code",
-                "login.button.quick": "Quick Login",
-                "login.button.verify": "Login with Code",
-                "login.button.register": "Register Now",
-                "login.send.code": "Send Code",
-                "login.agree.prefix": "I have read and agree to",
-                "login.terms": "Terms of Service",
-                "login.privacy": "Privacy Policy",
+                "scenarios.custom.subtitle": "Custom Solutions",
+                "products.x2.name": "Agibot X2",
+                "products.x2.label": "Best Seller",
+                "products.a2ultra.name": "Agibot A2 Ultra",
+                "products.a2ultra.label": "Premium",
+                "products.a2pro.name": "Agibot A2 Pro",
+                "products.a2pro.label": "Popular",
+                "products.d1ultra.name": "Agibot D1 Ultra",
+                "products.d1ultra.label": "Budget Friendly",
+                "products.d1edu.name": "Agibot D1 Pro/Edu",
+                "products.d1edu.label": "Educational",
+                "products.g2.name": "Agibot Genie G2",
+                "products.g2.label": "Industrial",
+                "products.g1.name": "Agibot Genie G1",
+                "products.g1.label": "AI Powered",
+                "products.x1.name": "Agibot X1",
+                "products.x1.label": "Developer",
+                "community.title": "Community",
+                "community.rental.title": "Rental Service Provider",
+                "community.rental.button": "Apply Now",
+                "community.rental.description": "Expand your rental business across Europe with our platform support.",
+                "community.rental.feature1": "Platform traffic support",
+                "community.rental.feature2": "Standardized operations",
+                "community.rental.feature3": "Technical support",
+                "community.manufacturer.title": "Rent-to-Own",
+                "community.manufacturer.button": "Learn More",
+                "community.manufacturer.description": "Flexible rent-to-purchase plans with rent credit towards buying.",
+                "community.manufacturer.feature1": "Rent credit applied",
+                "community.manufacturer.feature2": "Flexible payment",
+                "community.manufacturer.feature3": "Purchase priority",
+                "community.creator.title": "Custom Development",
+                "community.creator.button": "Consult",
+                "community.creator.description": "Tailored robot solutions designed for your specific needs.",
+                "community.creator.feature1": "Function customization",
+                "community.creator.feature2": "Brand customization",
+                "community.creator.feature3": "Technical support",
+                "community.influencer.title": "Influencer / KOL",
+                "community.influencer.button": "Collaborate",
+                "community.influencer.description": "Access premium robots for content creation.",
+                "community.influencer.feature1": "Free robot support",
+                "community.influencer.feature2": "Business opportunities",
+                "community.influencer.feature3": "Exposure support",
+                "community.news.title": "Latest News",
+                "community.news.item1.title": "Agibot Holds First European Launch in Italy",
+                "community.news.item2.title": "15x Speed Boost! VLA Deployment Breakthrough",
+                "community.news.item3.title": "Agibot Debuts at UK BETT Exhibition",
+                "community.news.nomore": "No more content",
+                "skills.title": "Robot Skills",
+                "skills.platform.title": "Interactive Platform",
+                "skills.platform.description": "For Lingxi X2, Yuanzheng A2...",
+                "skills.soul.title": "Soul Platform",
+                "skills.soul.description": "For Lingxi X2...",
+                "skills.drum.title": "Long Drum Dance",
+                "skills.drum.description": "For Yuanzheng A2 Youth",
+                "skills.welcome.title": "Welcome Ceremony",
+                "skills.welcome.description": "For Agibot A2 Ultra",
+                "skills.festive.title": "Festive Performance",
+                "skills.festive.description": "For Agibot Genie G1",
+                "skills.music.title": "Music Performance",
+                "skills.music.description": "For All Models",
+                "skills.dance.title": "Dynamic Dance",
+                "skills.dance.description": "For Agibot D1 Edu",
+                "skills.greeting.title": "Interactive Greeting",
+                "skills.greeting.description": "For Lingxi X2",
+                "skills.loadmore": "Load more",
+                "profile.title": "My Profile",
+                "profile.subtitle": "Login to access orders and preferences",
+                "profile.signin": "Sign In",
+                "profile.quicklinks": "Quick Links",
+                "profile.orders.title": "📋 My Orders",
+                "profile.orders.description": "View rental history",
+                "profile.favorites.title": "⭐ Favorites",
+                "profile.favorites.description": "Saved robots",
+                "profile.settings.title": "⚙️ Settings",
+                "profile.settings.description": "Account settings",
                 "nav.home": "Home",
-                "nav.cart": "Cart",
-                "nav.orders": "Orders",
+                "nav.community": "Community",
+                "nav.skills": "Skills",
                 "nav.profile": "Profile"
             },
             fr: {
                 "header.subtitle": "Europe • Propulsé par Agibot",
                 "header.login": "Connexion",
-                "home.hero.title": "Louez des robots",
-                "home.hero.subtitle": "Coût bas · Tous scénarios · Garanti",
-                "home.hero.tag1": "Professionnel",
-                "home.hero.tag2": "Réponse rapide",
-                "home.hero.tag3": "Qualité",
-                "home.scenarios.title": "Scénarios populaires",
-                "home.category.industry": "Industries",
-                "home.category.hot": "Marques",
-                "home.category.skin": "Costumes",
-                "home.category.nearby": "À proximité",
-                "home.booking.location": "Ville",
+                "home.cta.title": "Louez des robots sur BotShare",
+                "home.cta.subtitle": "🤖 Votre partenaire robot premium en Europe",
+                "home.section.title": "Robots Populaires",
+                "home.section.subtitle": "#Sélection Premium",
+                "home.section.more": "Plus →",
+                "home.scenarios.title": "Scénarios Populaires",
+                "home.recommend.title": "Recommandé pour Vous",
+                "home.booking.location": "Sélectionner Ville",
                 "home.booking.button": "Recommander",
-                "home.products.title": "Recommandé",
-                "scenarios.party": "Fêtes",
+                "scenarios.party": "Événements",
                 "scenarios.party.subtitle": "Anniversaire, Noël",
                 "scenarios.exhibition": "Expositions",
-                "scenarios.exhibition.subtitle": "Événements d'entreprise",
+                "scenarios.exhibition.subtitle": "Événements",
                 "scenarios.team": "Team Building",
-                "scenarios.team.subtitle": "Activités d'équipe",
-                "scenarios.retail": "Magasin",
-                "scenarios.retail.subtitle": "Promotion, accueil",
+                "scenarios.team.subtitle": "Activités",
+                "scenarios.retail": "Commerce",
+                "scenarios.retail.subtitle": "Promotion",
                 "scenarios.security": "Sécurité",
-                "scenarios.security.subtitle": "Patrouille",
+                "scenarios.security.subtitle": "Sécurité",
                 "scenarios.commercial": "Spectacles",
-                "scenarios.commercial.subtitle": "Événements",
-                "scenarios.livestream": "Livestream",
-                "scenarios.livestream.subtitle": "Influenceurs",
+                "scenarios.commercial.subtitle": "Spectacles",
+                "scenarios.livestream": "Diffusion",
+                "scenarios.livestream.subtitle": "Live",
                 "scenarios.custom": "Personnalisé",
-                "scenarios.custom.subtitle": "Solutions sur mesure",
-                "products.newcomer.name": "Nouveau - Économisez €200",
-                "products.newcomer.label": "Nouveau",
-                "products.dance.name": "Nuit danse robot spéciale",
-                "products.dance.label": "Limité",
-                "products.festival.name": "Location exclusive vendeur",
-                "products.festival.label": "Marchand",
-                "products.dragon.name": "Week-end - Dragon flamme",
-                "products.dragon.label": "Populaire",
-                "community.title": "Scénarios",
-                "cart.title": "Panier",
-                "cart.empty": "Votre panier est vide",
-                "cart.empty.subtitle": "Découvrez nos robots!",
-                "cart.browse": "Commencer",
-                "cart.scenarios": "Scénarios populaires",
-                "login.tab.login": "Connexion",
-                "login.tab.register": "S'inscrire",
-                "login.method.phone": "Téléphone",
-                "login.method.email": "Email",
-                "login.phone.placeholder": "Numéro de téléphone",
-                "login.email.placeholder": "Adresse email",
-                "login.code.placeholder": "Code de vérification",
-                "login.button.quick": "Connexion rapide",
-                "login.button.verify": "Avec code",
-                "login.button.register": "S'inscrire",
-                "login.send.code": "Envoyer code",
-                "login.agree.prefix": "J'ai lu et j'accepte",
-                "login.terms": "Conditions d'utilisation",
-                "login.privacy": "Politique de confidentialité",
+                "scenarios.custom.subtitle": "Solutions",
+                "products.x2.name": "Agibot X2",
+                "products.x2.label": "Meilleure Vente",
+                "products.a2ultra.name": "Agibot A2 Ultra",
+                "products.a2ultra.label": "Premium",
+                "products.a2pro.name": "Agibot A2 Pro",
+                "products.a2pro.label": "Populaire",
+                "products.d1ultra.name": "Agibot D1 Ultra",
+                "products.d1ultra.label": "Économique",
+                "products.d1edu.name": "Agibot D1 Pro/Edu",
+                "products.d1edu.label": "Éducatif",
+                "products.g2.name": "Robot IA Agibot Genie G2",
+                "products.g2.label": "Industriel",
+                "products.g1.name": "Robot IA Agibot Genie G1",
+                "products.g1.label": "IA Avancée",
+                "products.x1.name": "Agibot X1",
+                "products.x1.label": "Développeur",
+                "community.title": "Communauté",
+                "community.rental.title": "Fournisseur Location",
+                "community.rental.button": "Postuler",
+                "community.rental.description": "Développez votre activité en Europe.",
+                "community.rental.feature1": "Support trafic",
+                "community.rental.feature2": "Opérations standard",
+                "community.rental.feature3": "Support technique",
+                "community.manufacturer.title": "Location-Achat",
+                "community.manufacturer.button": "En Savoir Plus",
+                "community.manufacturer.description": "Plans flexibles avec crédit de location pour l'achat.",
+                "community.manufacturer.feature1": "Crédit de location",
+                "community.manufacturer.feature2": "Paiement flexible",
+                "community.manufacturer.feature3": "Priorité d'achat",
+                "community.creator.title": "Développement Sur Mesure",
+                "community.creator.button": "Consulter",
+                "community.creator.description": "Solutions robotiques personnalisées selon vos besoins.",
+                "community.creator.feature1": "Personnalisation fonctions",
+                "community.creator.feature2": "Personnalisation marque",
+                "community.creator.feature3": "Support technique",
+                "community.influencer.title": "Influenceur",
+                "community.influencer.button": "Collaborer",
+                "community.influencer.description": "Robots premium pour contenu.",
+                "community.influencer.feature1": "Support robot gratuit",
+                "community.influencer.feature2": "Opportunités business",
+                "community.influencer.feature3": "Support exposition",
+                "community.news.title": "Actualités",
+                "community.news.item1.title": "Agibot lance en Italie",
+                "community.news.item2.title": "Boost 15x! Percée VLA",
+                "community.news.item3.title": "Agibot au BETT UK",
+                "community.news.nomore": "Fin du contenu",
+                "skills.title": "Compétences Robot",
+                "skills.platform.title": "Plateforme Interactive",
+                "skills.platform.description": "Pour Lingxi X2, Yuanzheng A2...",
+                "skills.soul.title": "Plateforme Soul",
+                "skills.soul.description": "Pour Lingxi X2...",
+                "skills.drum.title": "Danse Tambour",
+                "skills.drum.description": "Pour Yuanzheng A2 Jeunesse",
+                "skills.welcome.title": "Cérémonie Accueil",
+                "skills.welcome.description": "Pour Agibot A2 Ultra",
+                "skills.festive.title": "Performance Festive",
+                "skills.festive.description": "Pour Genie G1",
+                "skills.music.title": "Performance Musicale",
+                "skills.music.description": "Tous modèles",
+                "skills.dance.title": "Danse Dynamique",
+                "skills.dance.description": "Pour Agibot D1 Edu",
+                "skills.greeting.title": "Salutation Interactive",
+                "skills.greeting.description": "Pour Lingxi X2",
+                "skills.loadmore": "Charger plus",
+                "profile.title": "Mon Profil",
+                "profile.subtitle": "Connexion pour commandes",
+                "profile.signin": "Se connecter",
+                "profile.quicklinks": "Liens Rapides",
+                "profile.orders.title": "📋 Mes Commandes",
+                "profile.orders.description": "Historique location",
+                "profile.favorites.title": "⭐ Favoris",
+                "profile.favorites.description": "Robots sauvegardés",
+                "profile.settings.title": "⚙️ Paramètres",
+                "profile.settings.description": "Paramètres compte",
                 "nav.home": "Accueil",
-                "nav.cart": "Panier",
-                "nav.orders": "Commandes",
+                "nav.community": "Communauté",
+                "nav.skills": "Compétences",
                 "nav.profile": "Profil"
             },
             de: {
                 "header.subtitle": "Europa • Powered by Agibot",
                 "header.login": "Anmelden",
-                "home.hero.title": "Roboter mieten",
-                "home.hero.subtitle": "Günstig · Alle Szenarien · Garantiert",
-                "home.hero.tag1": "Professionell",
-                "home.hero.tag2": "Schnell",
-                "home.hero.tag3": "Qualität",
+                "home.cta.title": "Mieten Sie Roboter bei BotShare",
+                "home.cta.subtitle": "🤖 Ihr Premium-Roboterpartner in Europa",
+                "home.section.title": "Beliebte Roboter",
+                "home.section.subtitle": "#Premium-Auswahl",
+                "home.section.more": "Mehr →",
                 "home.scenarios.title": "Beliebte Szenarien",
-                "home.category.industry": "Branchen",
-                "home.category.hot": "Marken",
-                "home.category.skin": "Kostüme",
-                "home.category.nearby": "In der Nähe",
-                "home.booking.location": "Stadt",
+                "home.recommend.title": "Empfehlen für Mich",
+                "home.booking.location": "Stadt Wählen",
                 "home.booking.button": "Empfehlen",
-                "home.products.title": "Empfohlen",
-                "scenarios.party": "Partys",
+                "scenarios.party": "Party Events",
                 "scenarios.party.subtitle": "Geburtstag, Weihnachten",
-                "scenarios.exhibition": "Messen",
-                "scenarios.exhibition.subtitle": "Firmenveranstaltungen",
+                "scenarios.exhibition": "Ausstellungen",
+                "scenarios.exhibition.subtitle": "Events",
                 "scenarios.team": "Teambuilding",
-                "scenarios.team.subtitle": "Teamaktivitäten",
+                "scenarios.team.subtitle": "Team Aktivitäten",
                 "scenarios.retail": "Einzelhandel",
-                "scenarios.retail.subtitle": "Werbung, Empfang",
+                "scenarios.retail.subtitle": "Promotion",
                 "scenarios.security": "Sicherheit",
-                "scenarios.security.subtitle": "Patrouille",
+                "scenarios.security.subtitle": "Sicherheit",
                 "scenarios.commercial": "Shows",
-                "scenarios.commercial.subtitle": "Events",
+                "scenarios.commercial.subtitle": "Shows",
                 "scenarios.livestream": "Livestream",
-                "scenarios.livestream.subtitle": "Influencer",
+                "scenarios.livestream.subtitle": "Live",
                 "scenarios.custom": "Individuell",
-                "scenarios.custom.subtitle": "Maßgeschneidert",
-                "products.newcomer.name": "Neu - Sparen Sie €200",
-                "products.newcomer.label": "Neu",
-                "products.dance.name": "Roboter-Tanz-Nacht",
-                "products.dance.label": "Limitiert",
-                "products.festival.name": "Händler exklusiv",
-                "products.festival.label": "Händler",
-                "products.dragon.name": "Wochenende - Flammendrache",
-                "products.dragon.label": "Beliebt",
-                "community.title": "Szenarien",
-                "cart.title": "Warenkorb",
-                "cart.empty": "Ihr Warenkorb ist leer",
-                "cart.empty.subtitle": "Entdecken Sie unsere Roboter!",
-                "cart.browse": "Jetzt shoppen",
-                "cart.scenarios": "Beliebte Szenarien",
-                "login.tab.login": "Anmelden",
-                "login.tab.register": "Registrieren",
-                "login.method.phone": "Telefon",
-                "login.method.email": "E-Mail",
-                "login.phone.placeholder": "Telefonnummer",
-                "login.email.placeholder": "E-Mail-Adresse",
-                "login.code.placeholder": "Bestätigungscode",
-                "login.button.quick": "Schnell anmelden",
-                "login.button.verify": "Mit Code",
-                "login.button.register": "Jetzt registrieren",
-                "login.send.code": "Code senden",
-                "login.agree.prefix": "Ich habe gelesen und stimme zu",
-                "login.terms": "Nutzungsbedingungen",
-                "login.privacy": "Datenschutzrichtlinie",
+                "scenarios.custom.subtitle": "Lösungen",
+                "products.x2.name": "Agibot X2-Edition",
+                "products.x2.label": "Bestseller",
+                "products.a2ultra.name": "Agibot Yuanzheng A2 Flaggschiff",
+                "products.a2ultra.label": "Premium",
+                "products.a2pro.name": "Agibot Yuanzheng A2 Jugend",
+                "products.a2pro.label": "Beliebt",
+                "products.d1ultra.name": "Agibot D1 Ultra",
+                "products.d1ultra.label": "Günstig",
+                "products.d1edu.name": "Agibot D1 Pro/Edu",
+                "products.d1edu.label": "Bildung",
+                "products.g2.name": "Agibot Genie G2 KI-Roboter",
+                "products.g2.label": "Industriell",
+                "products.g1.name": "Agibot Genie G1 KI-Roboter",
+                "products.g1.label": "KI-gesteuert",
+                "products.x1.name": "Agibot X1",
+                "products.x1.label": "Entwickler",
+                "community.title": "Community",
+                "community.rental.title": "Verleihdienstleister",
+                "community.rental.button": "Bewerben",
+                "community.rental.description": "Erweitern Sie Ihr Geschäft in Europa.",
+                "community.rental.feature1": "Traffic-Support",
+                "community.rental.feature2": "Standardbetrieb",
+                "community.rental.feature3": "Technischer Support",
+                "community.manufacturer.title": "Mietkauf",
+                "community.manufacturer.button": "Mehr Erfahren",
+                "community.manufacturer.description": "Flexible Mietkauf-Pläne mit Mietanrechnung.",
+                "community.manufacturer.feature1": "Mietanrechnung",
+                "community.manufacturer.feature2": "Flexible Zahlung",
+                "community.manufacturer.feature3": "Kaufpriorität",
+                "community.creator.title": "Individuelle Entwicklung",
+                "community.creator.button": "Beratung",
+                "community.creator.description": "Maßgeschneiderte Roboterlösungen für Ihre Bedürfnisse.",
+                "community.creator.feature1": "Funktionsanpassung",
+                "community.creator.feature2": "Markenanpassung",
+                "community.creator.feature3": "Technischer Support",
+                "community.influencer.title": "Influencer",
+                "community.influencer.button": "Zusammenarbeiten",
+                "community.influencer.description": "Premium-Roboter für Content.",
+                "community.influencer.feature1": "Kostenloser Support",
+                "community.influencer.feature2": "Business-Chancen",
+                "community.influencer.feature3": "Exposure-Support",
+                "community.news.title": "Neuigkeiten",
+                "community.news.item1.title": "Agibot Launch in Italien",
+                "community.news.item2.title": "15x Speed! VLA Durchbruch",
+                "community.news.item3.title": "Agibot auf UK BETT",
+                "community.news.nomore": "Kein Inhalt mehr",
+                "skills.title": "Roboter-Skills",
+                "skills.platform.title": "Interaktive Plattform",
+                "skills.platform.description": "Für Lingxi X2, Yuanzheng A2...",
+                "skills.soul.title": "Soul-Plattform",
+                "skills.soul.description": "Für Lingxi X2...",
+                "skills.drum.title": "Trommeltanz",
+                "skills.drum.description": "Für Yuanzheng A2 Jugend",
+                "skills.welcome.title": "Willkommenszeremonie",
+                "skills.welcome.description": "Für Yuanzheng A2 Flaggschiff",
+                "skills.festive.title": "Festliche Performance",
+                "skills.festive.description": "Für Genie G1",
+                "skills.music.title": "Musikperformance",
+                "skills.music.description": "Alle Modelle",
+                "skills.dance.title": "Dynamischer Tanz",
+                "skills.dance.description": "Für Agibot D1 Edu",
+                "skills.greeting.title": "Interaktive Begrüßung",
+                "skills.greeting.description": "Für Lingxi X2",
+                "skills.loadmore": "Mehr laden",
+                "profile.title": "Mein Profil",
+                "profile.subtitle": "Login für Bestellungen",
+                "profile.signin": "Anmelden",
+                "profile.quicklinks": "Schnellzugriffe",
+                "profile.orders.title": "📋 Meine Bestellungen",
+                "profile.orders.description": "Mietverlauf",
+                "profile.favorites.title": "⭐ Favoriten",
+                "profile.favorites.description": "Gespeicherte Roboter",
+                "profile.settings.title": "⚙️ Einstellungen",
+                "profile.settings.description": "Kontoeinstellungen",
                 "nav.home": "Start",
-                "nav.cart": "Warenkorb",
-                "nav.orders": "Bestellungen",
+                "nav.community": "Community",
+                "nav.skills": "Skills",
                 "nav.profile": "Profil"
             },
             it: {
                 "header.subtitle": "Europa • Powered by Agibot",
                 "header.login": "Accedi",
-                "home.hero.title": "Noleggia robot",
-                "home.hero.subtitle": "Economico · Tutti scenari · Garantito",
-                "home.hero.tag1": "Professionale",
-                "home.hero.tag2": "Veloce",
-                "home.hero.tag3": "Qualità",
-                "home.scenarios.title": "Scenari popolari",
-                "home.category.industry": "Industrie",
-                "home.category.hot": "Marchi",
-                "home.category.skin": "Costumi",
-                "home.category.nearby": "Vicino",
-                "home.booking.location": "Città",
+                "home.cta.title": "Noleggia robot su BotShare",
+                "home.cta.subtitle": "🤖 Il tuo partner robot premium in Europa",
+                "home.section.title": "Robot Popolari",
+                "home.section.subtitle": "#Selezione Premium",
+                "home.section.more": "Altro →",
+                "home.scenarios.title": "Scenari Popolari",
+                "home.recommend.title": "Consigliato per Te",
+                "home.booking.location": "Seleziona Città",
                 "home.booking.button": "Consiglia",
-                "home.products.title": "Consigliato",
-                "scenarios.party": "Feste",
+                "scenarios.party": "Eventi",
                 "scenarios.party.subtitle": "Compleanno, Natale",
-                "scenarios.exhibition": "Fiere",
-                "scenarios.exhibition.subtitle": "Eventi aziendali",
+                "scenarios.exhibition": "Mostre",
+                "scenarios.exhibition.subtitle": "Eventi",
                 "scenarios.team": "Team Building",
-                "scenarios.team.subtitle": "Attività di squadra",
-                "scenarios.retail": "Negozi",
+                "scenarios.team.subtitle": "Attività",
+                "scenarios.retail": "Commercio",
                 "scenarios.retail.subtitle": "Promozione",
                 "scenarios.security": "Sicurezza",
-                "scenarios.security.subtitle": "Pattuglia",
+                "scenarios.security.subtitle": "Sicurezza",
                 "scenarios.commercial": "Spettacoli",
-                "scenarios.commercial.subtitle": "Eventi",
+                "scenarios.commercial.subtitle": "Spettacoli",
                 "scenarios.livestream": "Livestream",
-                "scenarios.livestream.subtitle": "Influencer",
+                "scenarios.livestream.subtitle": "Live",
                 "scenarios.custom": "Personalizzato",
-                "scenarios.custom.subtitle": "Soluzioni su misura",
-                "products.newcomer.name": "Nuovo - Risparmia €200",
-                "products.newcomer.label": "Nuovo",
-                "products.dance.name": "Notte danza robot",
-                "products.dance.label": "Limitato",
-                "products.festival.name": "Affare esclusivo rivenditore",
-                "products.festival.label": "Commerciante",
-                "products.dragon.name": "Weekend - Drago di fuoco",
-                "products.dragon.label": "Popolare",
-                "community.title": "Scenari",
-                "cart.title": "Carrello",
-                "cart.empty": "Il tuo carrello è vuoto",
-                "cart.empty.subtitle": "Scopri i nostri robot!",
-                "cart.browse": "Inizia",
-                "cart.scenarios": "Scenari popolari",
-                "login.tab.login": "Accedi",
-                "login.tab.register": "Registrati",
-                "login.method.phone": "Telefono",
-                "login.method.email": "Email",
-                "login.phone.placeholder": "Numero di telefono",
-                "login.email.placeholder": "Indirizzo email",
-                "login.code.placeholder": "Codice di verifica",
-                "login.button.quick": "Accesso rapido",
-                "login.button.verify": "Con codice",
-                "login.button.register": "Registrati ora",
-                "login.send.code": "Invia codice",
-                "login.agree.prefix": "Ho letto e accetto",
-                "login.terms": "Termini di servizio",
-                "login.privacy": "Informativa privacy",
+                "scenarios.custom.subtitle": "Soluzioni",
+                "products.x2.name": "Agibot X2 Edizione Youth",
+                "products.x2.label": "Più Venduto",
+                "products.a2ultra.name": "Agibot A2 Ultra",
+                "products.a2ultra.label": "Premium",
+                "products.a2pro.name": "Agibot Yuanzheng A2 Youth",
+                "products.a2pro.label": "Popolare",
+                "products.d1ultra.name": "Agibot D1 Ultra",
+                "products.d1ultra.label": "Economico",
+                "products.d1edu.name": "Agibot D1 Pro/Edu",
+                "products.d1edu.label": "Educativo",
+                "products.g2.name": "Robot AI Agibot Genie G2",
+                "products.g2.label": "Industriale",
+                "products.g1.name": "Robot AI Agibot Genie G1",
+                "products.g1.label": "AI Avanzato",
+                "products.x1.name": "Agibot X1",
+                "products.x1.label": "Sviluppatore",
+                "community.title": "Comunità",
+                "community.rental.title": "Fornitore Noleggio",
+                "community.rental.button": "Candidati",
+                "community.rental.description": "Espandi il tuo business in Europa.",
+                "community.rental.feature1": "Supporto traffico",
+                "community.rental.feature2": "Operazioni standard",
+                "community.rental.feature3": "Supporto tecnico",
+                "community.manufacturer.title": "Noleggio con Riscatto",
+                "community.manufacturer.button": "Scopri di Più",
+                "community.manufacturer.description": "Piani flessibili con credito affitto verso l'acquisto.",
+                "community.manufacturer.feature1": "Credito affitto",
+                "community.manufacturer.feature2": "Pagamento flessibile",
+                "community.manufacturer.feature3": "Priorità acquisto",
+                "community.creator.title": "Sviluppo Personalizzato",
+                "community.creator.button": "Consulta",
+                "community.creator.description": "Soluzioni robotiche su misura per le tue esigenze.",
+                "community.creator.feature1": "Personalizzazione funzioni",
+                "community.creator.feature2": "Personalizzazione brand",
+                "community.creator.feature3": "Supporto tecnico",
+                "community.influencer.title": "Influencer",
+                "community.influencer.button": "Collabora",
+                "community.influencer.description": "Robot premium per contenuti.",
+                "community.influencer.feature1": "Supporto robot gratuito",
+                "community.influencer.feature2": "Opportunità business",
+                "community.influencer.feature3": "Supporto esposizione",
+                "community.news.title": "Ultime Notizie",
+                "community.news.item1.title": "Agibot lancia in Italia",
+                "community.news.item2.title": "Boost 15x! Breakthrough VLA",
+                "community.news.item3.title": "Agibot al BETT UK",
+                "community.news.nomore": "Fine contenuti",
+                "skills.title": "Competenze Robot",
+                "skills.platform.title": "Piattaforma Interattiva",
+                "skills.platform.description": "Per Lingxi X2, Yuanzheng A2...",
+                "skills.soul.title": "Piattaforma Soul",
+                "skills.soul.description": "Per Lingxi X2...",
+                "skills.drum.title": "Danza Tamburo",
+                "skills.drum.description": "Per Yuanzheng A2 Youth",
+                "skills.welcome.title": "Cerimonia Benvenuto",
+                "skills.welcome.description": "Per Agibot A2 Ultra",
+                "skills.festive.title": "Performance Festiva",
+                "skills.festive.description": "Per Genie G1",
+                "skills.music.title": "Performance Musicale",
+                "skills.music.description": "Tutti i modelli",
+                "skills.dance.title": "Danza Dinamica",
+                "skills.dance.description": "Per Agibot D1 Edu",
+                "skills.greeting.title": "Saluto Interattivo",
+                "skills.greeting.description": "Per Lingxi X2",
+                "skills.loadmore": "Carica altro",
+                "profile.title": "Il Mio Profilo",
+                "profile.subtitle": "Login per ordini",
+                "profile.signin": "Accedi",
+                "profile.quicklinks": "Collegamenti Rapidi",
+                "profile.orders.title": "📋 I Miei Ordini",
+                "profile.orders.description": "Cronologia noleggi",
+                "profile.favorites.title": "⭐ Preferiti",
+                "profile.favorites.description": "Robot salvati",
+                "profile.settings.title": "⚙️ Impostazioni",
+                "profile.settings.description": "Impostazioni account",
                 "nav.home": "Home",
-                "nav.cart": "Carrello",
-                "nav.orders": "Ordini",
+                "nav.community": "Community",
+                "nav.skills": "Competenze",
                 "nav.profile": "Profilo"
             },
             es: {
-                "header.subtitle": "Europa • Powered by Agibot",
-                "header.login": "Iniciar sesión",
-                "home.hero.title": "Alquila robots",
-                "home.hero.subtitle": "Bajo costo · Todos · Garantizado",
-                "home.hero.tag1": "Profesional",
-                "home.hero.tag2": "Rápido",
-                "home.hero.tag3": "Calidad",
-                "home.scenarios.title": "Escenarios populares",
-                "home.category.industry": "Industrias",
-                "home.category.hot": "Marcas",
-                "home.category.skin": "Disfraces",
-                "home.category.nearby": "Cerca",
-                "home.booking.location": "Ciudad",
+                "header.subtitle": "Europa • Impulsado por Agibot",
+                "header.login": "Iniciar Sesión",
+                "home.cta.title": "Alquile robots en BotShare",
+                "home.cta.subtitle": "🤖 Su socio premium de robots en Europa",
+                "home.section.title": "Robots Populares",
+                "home.section.subtitle": "#Selección Premium",
+                "home.section.more": "Más →",
+                "home.scenarios.title": "Escenarios Populares",
+                "home.recommend.title": "Recomendado para Ti",
+                "home.booking.location": "Seleccionar Ciudad",
                 "home.booking.button": "Recomendar",
-                "home.products.title": "Recomendado",
-                "scenarios.party": "Fiestas",
+                "scenarios.party": "Eventos",
                 "scenarios.party.subtitle": "Cumpleaños, Navidad",
                 "scenarios.exhibition": "Exposiciones",
-                "scenarios.exhibition.subtitle": "Eventos corporativos",
+                "scenarios.exhibition.subtitle": "Eventos",
                 "scenarios.team": "Team Building",
                 "scenarios.team.subtitle": "Actividades",
-                "scenarios.retail": "Tiendas",
+                "scenarios.retail": "Comercio",
                 "scenarios.retail.subtitle": "Promoción",
                 "scenarios.security": "Seguridad",
-                "scenarios.security.subtitle": "Patrulla",
-                "scenarios.commercial": "Shows",
-                "scenarios.commercial.subtitle": "Eventos",
-                "scenarios.livestream": "Livestream",
-                "scenarios.livestream.subtitle": "Influencers",
+                "scenarios.security.subtitle": "Seguridad",
+                "scenarios.commercial": "Espectáculos",
+                "scenarios.commercial.subtitle": "Espectáculos",
+                "scenarios.livestream": "Transmisión",
+                "scenarios.livestream.subtitle": "En Vivo",
                 "scenarios.custom": "Personalizado",
-                "scenarios.custom.subtitle": "Soluciones personalizadas",
-                "products.newcomer.name": "Nuevo - Ahorra €200",
-                "products.newcomer.label": "Nuevo",
-                "products.dance.name": "Noche baile robot",
-                "products.dance.label": "Limitado",
-                "products.festival.name": "Oferta exclusiva vendedor",
-                "products.festival.label": "Comerciante",
-                "products.dragon.name": "Fin de semana - Dragón llamas",
-                "products.dragon.label": "Popular",
-                "community.title": "Escenarios",
-                "cart.title": "Carrito",
-                "cart.empty": "Tu carrito está vacío",
-                "cart.empty.subtitle": "¡Descubre nuestros robots!",
-                "cart.browse": "Comenzar",
-                "cart.scenarios": "Escenarios populares",
-                "login.tab.login": "Iniciar sesión",
-                "login.tab.register": "Registrarse",
-                "login.method.phone": "Teléfono",
-                "login.method.email": "Email",
-                "login.phone.placeholder": "Número de teléfono",
-                "login.email.placeholder": "Dirección de email",
-                "login.code.placeholder": "Código de verificación",
-                "login.button.quick": "Inicio rápido",
-                "login.button.verify": "Con código",
-                "login.button.register": "Registrarse ahora",
-                "login.send.code": "Enviar código",
-                "login.agree.prefix": "He leído y acepto",
-                "login.terms": "Términos de servicio",
-                "login.privacy": "Política de privacidad",
+                "scenarios.custom.subtitle": "Soluciones",
+                "products.x2.name": "Agibot X2 Edición Juvenil",
+                "products.x2.label": "Más Vendido",
+                "products.a2ultra.name": "Agibot A2 Ultra",
+                "products.a2ultra.label": "Premium",
+                "products.a2pro.name": "Agibot Yuanzheng A2 Juvenil",
+                "products.a2pro.label": "Popular",
+                "products.d1ultra.name": "Agibot D1 Ultra",
+                "products.d1ultra.label": "Económico",
+                "products.d1edu.name": "Agibot D1 Pro/Edu",
+                "products.d1edu.label": "Educativo",
+                "products.g2.name": "Robot IA Agibot Genie G2",
+                "products.g2.label": "Industrial",
+                "products.g1.name": "Robot IA Agibot Genie G1",
+                "products.g1.label": "IA Avanzada",
+                "products.x1.name": "Agibot X1",
+                "products.x1.label": "Desarrollador",
+                "community.title": "Comunidad",
+                "community.rental.title": "Proveedor Alquiler",
+                "community.rental.button": "Solicitar",
+                "community.rental.description": "Expanda su negocio en Europa.",
+                "community.rental.feature1": "Soporte tráfico",
+                "community.rental.feature2": "Operaciones estándar",
+                "community.rental.feature3": "Soporte técnico",
+                "community.manufacturer.title": "Alquiler con Opción a Compra",
+                "community.manufacturer.button": "Más Información",
+                "community.manufacturer.description": "Planes flexibles con crédito de alquiler hacia la compra.",
+                "community.manufacturer.feature1": "Crédito de alquiler",
+                "community.manufacturer.feature2": "Pago flexible",
+                "community.manufacturer.feature3": "Prioridad de compra",
+                "community.creator.title": "Desarrollo Personalizado",
+                "community.creator.button": "Consultar",
+                "community.creator.description": "Soluciones robóticas adaptadas a sus necesidades.",
+                "community.creator.feature1": "Personalización funciones",
+                "community.creator.feature2": "Personalización marca",
+                "community.creator.feature3": "Soporte técnico",
+                "community.influencer.title": "Influencer",
+                "community.influencer.button": "Colaborar",
+                "community.influencer.description": "Robots premium para contenido.",
+                "community.influencer.feature1": "Soporte robot gratuito",
+                "community.influencer.feature2": "Oportunidades negocio",
+                "community.influencer.feature3": "Soporte exposición",
+                "community.news.title": "Últimas Noticias",
+                "community.news.item1.title": "Agibot lanza en Italia",
+                "community.news.item2.title": "¡Boost 15x! Avance VLA",
+                "community.news.item3.title": "Agibot en BETT UK",
+                "community.news.nomore": "Sin más contenido",
+                "skills.title": "Habilidades Robot",
+                "skills.platform.title": "Plataforma Interactiva",
+                "skills.platform.description": "Para Lingxi X2, Yuanzheng A2...",
+                "skills.soul.title": "Plataforma Soul",
+                "skills.soul.description": "Para Lingxi X2...",
+                "skills.drum.title": "Danza Tambor",
+                "skills.drum.description": "Para Yuanzheng A2 Juvenil",
+                "skills.welcome.title": "Ceremonia Bienvenida",
+                "skills.welcome.description": "Para Agibot A2 Ultra",
+                "skills.festive.title": "Performance Festiva",
+                "skills.festive.description": "Para Genie G1",
+                "skills.music.title": "Performance Musical",
+                "skills.music.description": "Todos modelos",
+                "skills.dance.title": "Danza Dinámica",
+                "skills.dance.description": "Para Agibot D1 Edu",
+                "skills.greeting.title": "Saludo Interactivo",
+                "skills.greeting.description": "Para Lingxi X2",
+                "skills.loadmore": "Cargar más",
+                "profile.title": "Mi Perfil",
+                "profile.subtitle": "Login para pedidos",
+                "profile.signin": "Iniciar Sesión",
+                "profile.quicklinks": "Enlaces Rápidos",
+                "profile.orders.title": "📋 Mis Pedidos",
+                "profile.orders.description": "Historial alquileres",
+                "profile.favorites.title": "⭐ Favoritos",
+                "profile.favorites.description": "Robots guardados",
+                "profile.settings.title": "⚙️ Configuración",
+                "profile.settings.description": "Configuración cuenta",
                 "nav.home": "Inicio",
-                "nav.cart": "Carrito",
-                "nav.orders": "Pedidos",
+                "nav.community": "Comunidad",
+                "nav.skills": "Habilidades",
                 "nav.profile": "Perfil"
             }
         };
@@ -1359,62 +2031,17 @@
         let currentLang = 'en';
         let currentCountry = 'uk';
 
-        // Format price
+        // Format price with currency
         function formatPrice(price, country) {
             const config = currencyConfig[country];
             const adjustedPrice = Math.round(price * config.rate * config.multiplier);
             
+            // Format based on country
             if (country === 'uk') {
                 return `${config.symbol}${adjustedPrice.toLocaleString('en-GB')}`;
             } else {
                 return `${adjustedPrice.toLocaleString('de-DE')}${config.symbol}`;
             }
-        }
-
-        // Render scenarios
-        function renderScenarios() {
-            const grid = document.getElementById('scenario-grid');
-            grid.innerHTML = '';
-
-            scenarios.forEach(scenario => {
-                const card = document.createElement('div');
-                card.className = 'scenario-card';
-                card.innerHTML = `
-                    <div class="scenario-icon">${scenario.iconKey}</div>
-                    <div class="scenario-name" data-i18n="${scenario.nameKey}"></div>
-                `;
-                grid.appendChild(card);
-            });
-
-            updateTranslations();
-        }
-
-        // Render scenario details (Cart page)
-        function renderScenarioDetails() {
-            const grid = document.getElementById('cart-scenario-grid');
-            if (!grid) return;
-            
-            grid.innerHTML = '';
-
-            scenarios.forEach(scenario => {
-                const card = document.createElement('div');
-                card.className = 'scenario-detail-card';
-                card.innerHTML = `
-                    <div class="scenario-detail-image">${scenario.iconKey}</div>
-                    <div class="scenario-detail-content">
-                        <div class="scenario-detail-title" data-i18n="${scenario.nameKey}"></div>
-                        <div class="scenario-detail-subtitle" data-i18n="${scenario.subtitleKey}"></div>
-                        <div class="scenario-features">
-                            <div class="scenario-feature">专业服务团队</div>
-                            <div class="scenario-feature">快速响应</div>
-                            <div class="scenario-feature">品质保证</div>
-                        </div>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
-
-            updateTranslations();
         }
 
         // Render products
@@ -1424,14 +2051,13 @@
 
             products.forEach(product => {
                 const currentPrice = formatPrice(product.basePrice, currentCountry);
-                const originalPrice = formatPrice(product.basePrice * 1.5, currentCountry);
+                const originalPrice = formatPrice(product.basePrice * 1.43, currentCountry);
                 
                 const card = document.createElement('div');
                 card.className = 'product-card';
                 card.innerHTML = `
                     <div class="product-image">
                         <img src="${product.image}" alt="${product.id}">
-                        <div class="product-badge" data-i18n="${product.labelKey}"></div>
                     </div>
                     <div class="product-info">
                         <div class="product-name" data-i18n="${product.nameKey}"></div>
@@ -1439,30 +2065,23 @@
                             <span class="price-current">${currentPrice}</span>
                             <span class="price-original">${originalPrice}</span>
                         </div>
+                        <span class="price-label" data-i18n="${product.labelKey}"></span>
                     </div>
                 `;
                 grid.appendChild(card);
             });
 
+            // Update translations
             updateTranslations();
         }
 
-        // Update translations
+        // Update all translations
         function updateTranslations() {
             const elements = document.querySelectorAll('[data-i18n]');
             elements.forEach(element => {
                 const key = element.getAttribute('data-i18n');
                 if (translations[currentLang] && translations[currentLang][key]) {
                     element.textContent = translations[currentLang][key];
-                }
-            });
-
-            // Update placeholders
-            const placeholders = document.querySelectorAll('[data-i18n-placeholder]');
-            placeholders.forEach(element => {
-                const key = element.getAttribute('data-i18n-placeholder');
-                if (translations[currentLang] && translations[currentLang][key]) {
-                    element.placeholder = translations[currentLang][key];
                 }
             });
         }
@@ -1474,14 +2093,15 @@
                 currentLang = this.getAttribute('data-lang');
                 currentCountry = this.getAttribute('data-country');
                 
+                // Update active state
                 langButtons.forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
                 
-                renderScenarios();
-                renderScenarioDetails();
+                // Update content
                 renderProducts();
                 updateTranslations();
                 
+                // Update HTML lang
                 document.documentElement.lang = currentLang;
             });
         });
@@ -1494,95 +2114,45 @@
             item.addEventListener('click', function() {
                 const targetPage = this.getAttribute('data-page');
                 
-                if (targetPage) {
-                    navItems.forEach(nav => nav.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    pages.forEach(page => page.classList.remove('active'));
-                    document.getElementById(targetPage).classList.add('active');
-                    
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                }
+                navItems.forEach(nav => nav.classList.remove('active'));
+                this.classList.add('active');
+                
+                pages.forEach(page => page.classList.remove('active'));
+                document.getElementById(targetPage).classList.add('active');
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        // Banner Carousel
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.banner-slide');
+        const indicators = document.querySelectorAll('.indicator');
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            indicators.forEach(ind => ind.classList.remove('active'));
+            
+            slides[index].classList.add('active');
+            indicators[index].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        setInterval(nextSlide, 4000);
+
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                currentSlide = index;
+                showSlide(currentSlide);
             });
         });
 
         // Initialize
-        renderScenarios();
-        renderScenarioDetails();
         renderProducts();
-
-        // Header login button click
-        document.getElementById('header-login-btn').addEventListener('click', function() {
-            // Navigate to profile page (login page)
-            const profileNavItem = document.querySelector('.nav-item[data-page="profile-page"]');
-            if (profileNavItem) {
-                profileNavItem.click();
-            }
-        });
-
-        // Login/Register tab switching
-        document.querySelectorAll('.login-tab').forEach(tab => {
-            tab.addEventListener('click', function() {
-                const targetTab = this.getAttribute('data-tab');
-                const isOrders = targetTab.includes('orders');
-                const isLogin = targetTab.includes('login');
-                
-                // Update tab styles
-                const parentContainer = this.closest('.main-content');
-                parentContainer.querySelectorAll('.login-tab').forEach(t => {
-                    t.classList.remove('active');
-                    t.style.color = 'var(--text-secondary)';
-                    t.style.borderBottomColor = 'transparent';
-                });
-                this.classList.add('active');
-                this.style.color = 'var(--primary)';
-                this.style.borderBottomColor = 'var(--primary)';
-                
-                // Show/hide content
-                const loginContent = document.getElementById(isOrders ? 'login-orders-content' : 'login-profile-content');
-                const registerContent = document.getElementById(isOrders ? 'register-orders-content' : 'register-profile-content');
-                
-                if (isLogin) {
-                    loginContent.style.display = 'block';
-                    registerContent.style.display = 'none';
-                } else {
-                    loginContent.style.display = 'none';
-                    registerContent.style.display = 'block';
-                }
-            });
-        });
-
-        // Phone/Email method switching
-        document.querySelectorAll('.method-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const method = this.getAttribute('data-method');
-                const container = this.closest('.main-content');
-                
-                // Update button styles
-                container.querySelectorAll('.method-btn').forEach(b => {
-                    b.classList.remove('active');
-                    b.style.background = 'transparent';
-                    b.style.boxShadow = 'none';
-                });
-                this.classList.add('active');
-                this.style.background = 'white';
-                this.style.boxShadow = 'var(--shadow-sm)';
-                
-                // Update input placeholders
-                const inputs = container.querySelectorAll('.booking-input[data-i18n-placeholder]');
-                inputs.forEach(input => {
-                    if (method === 'phone') {
-                        input.type = 'tel';
-                        input.setAttribute('data-i18n-placeholder', 'login.phone.placeholder');
-                    } else {
-                        input.type = 'email';
-                        input.setAttribute('data-i18n-placeholder', 'login.email.placeholder');
-                    }
-                });
-                
-                updateTranslations();
-            });
-        });
     </script>
 </body>
 </html>

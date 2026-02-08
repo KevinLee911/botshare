@@ -165,6 +165,7 @@
             color: var(--text-secondary);
             font-weight: 400;
             letter-spacing: 0.03em;
+            white-space: nowrap;
         }
 
         .header-actions {
@@ -910,10 +911,6 @@
                 </div>
             </div>
             <div class="header-actions" style="display: flex; gap: 1rem; align-items: center;">
-                <button class="icon-btn" style="font-size: 1.2rem; background: transparent; border: none; cursor: pointer; color: var(--text-primary);">
-                    🔍
-                </button>
-                
                 <!-- 语言切换器 -->
                 <div class="language-switcher">
                     <button class="language-toggle" id="languageToggle">
@@ -1075,25 +1072,26 @@
 
             <div class="booking-section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 1.5rem; border-radius: 16px; margin-bottom: 2rem;">
                 <!-- 第一行: 城市输入 -->
-                <div style="margin-bottom: 1rem;">
+                <div style="margin-bottom: 1rem; position: relative;">
+                    <label data-i18n="home.booking.location" style="position: absolute; left: 0.8rem; top: 0.5rem; font-size: 0.7rem; color: rgba(255,255,255,0.8); pointer-events: none; z-index: 1;">选择城市</label>
                     <input type="text" 
-                           data-i18n-placeholder="home.booking.location" 
-                           style="width: 100%; padding: 0.8rem; border: none; border-radius: 8px; font-size: 0.9rem; color: #333;">
+                           data-i18n-placeholder="home.booking.locationHint"
+                           style="width: 100%; padding: 1.5rem 0.8rem 0.5rem 0.8rem; border: none; border-radius: 8px; font-size: 0.9rem; color: #333; box-sizing: border-box;">
                 </div>
                 
                 <!-- 第二行: 起始和结束日期 -->
                 <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
                     <div style="flex: 1; position: relative;">
-                        <label data-i18n="home.booking.startDate" style="position: absolute; left: 0.8rem; top: 0.8rem; font-size: 0.75rem; color: #999; pointer-events: none;">起始日期</label>
+                        <label data-i18n="home.booking.startDate" style="position: absolute; left: 0.8rem; top: 0.5rem; font-size: 0.7rem; color: #999; pointer-events: none; z-index: 1;">起始日期</label>
                         <input type="date" 
                                value="2026-02-10"
-                               style="width: 100%; padding: 1.8rem 0.8rem 0.4rem 0.8rem; border: none; border-radius: 8px; font-size: 0.9rem; color: #333;">
+                               style="width: 100%; padding: 1.5rem 0.8rem 0.5rem 0.8rem; border: none; border-radius: 8px; font-size: 0.85rem; color: #333; box-sizing: border-box;">
                     </div>
                     <div style="flex: 1; position: relative;">
-                        <label data-i18n="home.booking.endDate" style="position: absolute; left: 0.8rem; top: 0.8rem; font-size: 0.75rem; color: #999; pointer-events: none;">结束日期</label>
+                        <label data-i18n="home.booking.endDate" style="position: absolute; left: 0.8rem; top: 0.5rem; font-size: 0.7rem; color: #999; pointer-events: none; z-index: 1;">结束日期</label>
                         <input type="date" 
                                value="2026-02-11"
-                               style="width: 100%; padding: 1.8rem 0.8rem 0.4rem 0.8rem; border: none; border-radius: 8px; font-size: 0.9rem; color: #333;">
+                               style="width: 100%; padding: 1.5rem 0.8rem 0.5rem 0.8rem; border: none; border-radius: 8px; font-size: 0.85rem; color: #333; box-sizing: border-box;">
                     </div>
                 </div>
                 
@@ -1488,6 +1486,7 @@
                 "home.scenarios.subtitle": "#精选应用",
                 "home.recommend.title": "为您推荐",
                 "home.booking.location": "选择城市",
+                "home.booking.locationHint": "请输入城市",
                 "home.booking.startDate": "起始日期",
                 "home.booking.endDate": "结束日期",
                 "home.booking.button": "一键帮我推荐",
@@ -1596,6 +1595,7 @@
                 "home.scenarios.subtitle": "#Featured Applications",
                 "home.recommend.title": "Recommend for Me",
                 "home.booking.location": "Select City",
+                "home.booking.locationHint": "Enter city",
                 "home.booking.startDate": "Start Date",
                 "home.booking.endDate": "End Date",
                 "home.booking.button": "Recommend for Me",
@@ -1706,6 +1706,7 @@
                 "home.scenarios.subtitle": "#Applications Sélectionnées",
                 "home.recommend.title": "Recommandé pour Vous",
                 "home.booking.location": "Sélectionner Ville",
+                "home.booking.locationHint": "Saisir la ville",
                 "home.booking.startDate": "Date de Début",
                 "home.booking.endDate": "Date de Fin",
                 "home.booking.button": "Recommander",
@@ -1816,6 +1817,7 @@
                 "home.scenarios.subtitle": "#Ausgewählte Anwendungen",
                 "home.recommend.title": "Empfehlen für Mich",
                 "home.booking.location": "Stadt Wählen",
+                "home.booking.locationHint": "Stadt eingeben",
                 "home.booking.startDate": "Startdatum",
                 "home.booking.endDate": "Enddatum",
                 "home.booking.button": "Empfehlen",
@@ -1926,6 +1928,7 @@
                 "home.scenarios.subtitle": "#Applicazioni Selezionate",
                 "home.recommend.title": "Consigliato per Te",
                 "home.booking.location": "Seleziona Città",
+                "home.booking.locationHint": "Inserisci città",
                 "home.booking.startDate": "Data Inizio",
                 "home.booking.endDate": "Data Fine",
                 "home.booking.button": "Consiglia",
@@ -2036,6 +2039,7 @@
                 "home.scenarios.subtitle": "#Aplicaciones Destacadas",
                 "home.recommend.title": "Recomendado para Ti",
                 "home.booking.location": "Seleccionar Ciudad",
+                "home.booking.locationHint": "Ingresar ciudad",
                 "home.booking.startDate": "Fecha Inicio",
                 "home.booking.endDate": "Fecha Fin",
                 "home.booking.button": "Recomendar",

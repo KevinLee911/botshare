@@ -756,6 +756,137 @@
             object-fit: cover;
         }
 
+        /* Community Videos */
+        .community-videos {
+            display: grid;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .video-card {
+            background: var(--bg-white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s;
+        }
+
+        .video-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .video-thumbnail {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 aspect ratio */
+            background: var(--bg-light);
+            overflow: hidden;
+        }
+
+        .video-thumbnail img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .video-card:hover .video-play-overlay {
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .video-play-button {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary);
+            padding-left: 4px;
+            transition: all 0.3s;
+        }
+
+        .video-card:hover .video-play-button {
+            transform: scale(1.1);
+            background: white;
+        }
+
+        .video-duration {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .video-info {
+            padding: 1rem;
+        }
+
+        .video-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .video-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            font-size: 0.85rem;
+        }
+
+        .video-author {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .video-stats {
+            display: flex;
+            gap: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .video-description {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
         /* Bottom Navigation */
         .bottom-nav {
             position: fixed;
@@ -971,14 +1102,47 @@
                 </div>
             </div>
 
-            <!-- CTA Banner -->
-            <div class="cta-banner">
-                <div class="cta-content">
-                    <h2 data-i18n="home.cta.title">Rent Robots on BotShare</h2>
-                    <p data-i18n="home.cta.subtitle">🤖 Your Premium Robot Partner in Europe</p>
+
+            <!-- Recommend for Me Section -->
+            <div class="section-header">
+                <div>
+                    <span class="section-title" data-i18n="home.recommend.title">为您推荐</span>
+                    <span class="section-subtitle">Recommend for Me</span>
                 </div>
-                <div class="cta-arrow">→</div>
             </div>
+
+            <div class="booking-section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 1.5rem; border-radius: 16px; margin-bottom: 2rem;">
+                <!-- 第一行: 城市输入 -->
+                <div style="margin-bottom: 1rem; position: relative;">
+                    <label data-i18n="home.booking.location" style="position: absolute; left: 0.8rem; top: 0.5rem; font-size: 0.7rem; color: rgba(255,255,255,0.8); pointer-events: none; z-index: 1;">选择城市</label>
+                    <input type="text" 
+                           data-i18n-placeholder="home.booking.locationHint"
+                           style="width: 100%; padding: 1.5rem 0.8rem 0.5rem 0.8rem; border: none; border-radius: 8px; font-size: 0.9rem; color: #333; box-sizing: border-box;">
+                </div>
+                
+                <!-- 第二行: 起始和结束日期 -->
+                <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                    <div style="flex: 1; position: relative;">
+                        <label data-i18n="home.booking.startDate" style="position: absolute; left: 0.8rem; top: 0.5rem; font-size: 0.7rem; color: #999; pointer-events: none; z-index: 1;">起始日期</label>
+                        <input type="date" 
+                               value="2026-02-10"
+                               style="width: 100%; padding: 1.5rem 0.8rem 0.5rem 0.8rem; border: none; border-radius: 8px; font-size: 0.85rem; color: #333; box-sizing: border-box;">
+                    </div>
+                    <div style="flex: 1; position: relative;">
+                        <label data-i18n="home.booking.endDate" style="position: absolute; left: 0.8rem; top: 0.5rem; font-size: 0.7rem; color: #999; pointer-events: none; z-index: 1;">结束日期</label>
+                        <input type="date" 
+                               value="2026-02-11"
+                               style="width: 100%; padding: 1.5rem 0.8rem 0.5rem 0.8rem; border: none; border-radius: 8px; font-size: 0.85rem; color: #333; box-sizing: border-box;">
+                    </div>
+                </div>
+                
+                <!-- 推荐按钮 -->
+                <button data-i18n="home.booking.button" 
+                        style="width: 100%; padding: 1rem; background: white; color: #667eea; border: none; border-radius: 8px; font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.3s;">
+                    一键帮我推荐
+                </button>
+            </div>
+
 
             <!-- 8 Scenarios Section -->
             <div class="section-header">
@@ -1052,154 +1216,16 @@
                     </div>
                 </div>
                 
-                <!-- 8. 定制服务 -->
-                <div class="scenario-card" style="background-image: url('images/custom.jpg');">
+                <!-- 8. 清洁服务 -->
+                <div class="scenario-card" style="background-image: url('images/cleaning.jpg');">
                     <div class="scenario-content">
-                        <div class="scenario-icon">✨</div>
-                        <div class="scenario-title" data-i18n="scenarios.custom">定制服务</div>
-                        <div class="scenario-subtitle" data-i18n="scenarios.custom.subtitle">个性化方案</div>
+                        <div class="scenario-icon">🧹</div>
+                        <div class="scenario-title" data-i18n="scenarios.cleaning">清洁服务</div>
+                        <div class="scenario-subtitle" data-i18n="scenarios.cleaning.subtitle">商业清洁</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Recommend for Me Section -->
-            <div class="section-header">
-                <div>
-                    <span class="section-title" data-i18n="home.recommend.title">为您推荐</span>
-                    <span class="section-subtitle">Recommend for Me</span>
-                </div>
-            </div>
-
-            <div class="booking-section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 1.5rem; border-radius: 16px; margin-bottom: 2rem;">
-                <!-- 第一行: 城市输入 -->
-                <div style="margin-bottom: 1rem; position: relative;">
-                    <label data-i18n="home.booking.location" style="position: absolute; left: 0.8rem; top: 0.5rem; font-size: 0.7rem; color: rgba(255,255,255,0.8); pointer-events: none; z-index: 1;">选择城市</label>
-                    <input type="text" 
-                           data-i18n-placeholder="home.booking.locationHint"
-                           style="width: 100%; padding: 1.5rem 0.8rem 0.5rem 0.8rem; border: none; border-radius: 8px; font-size: 0.9rem; color: #333; box-sizing: border-box;">
-                </div>
-                
-                <!-- 第二行: 起始和结束日期 -->
-                <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
-                    <div style="flex: 1; position: relative;">
-                        <label data-i18n="home.booking.startDate" style="position: absolute; left: 0.8rem; top: 0.5rem; font-size: 0.7rem; color: #999; pointer-events: none; z-index: 1;">起始日期</label>
-                        <input type="date" 
-                               value="2026-02-10"
-                               style="width: 100%; padding: 1.5rem 0.8rem 0.5rem 0.8rem; border: none; border-radius: 8px; font-size: 0.85rem; color: #333; box-sizing: border-box;">
-                    </div>
-                    <div style="flex: 1; position: relative;">
-                        <label data-i18n="home.booking.endDate" style="position: absolute; left: 0.8rem; top: 0.5rem; font-size: 0.7rem; color: #999; pointer-events: none; z-index: 1;">结束日期</label>
-                        <input type="date" 
-                               value="2026-02-11"
-                               style="width: 100%; padding: 1.5rem 0.8rem 0.5rem 0.8rem; border: none; border-radius: 8px; font-size: 0.85rem; color: #333; box-sizing: border-box;">
-                    </div>
-                </div>
-                
-                <!-- 推荐按钮 -->
-                <button data-i18n="home.booking.button" 
-                        style="width: 100%; padding: 1rem; background: white; color: #667eea; border: none; border-radius: 8px; font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.3s;">
-                    一键帮我推荐
-                </button>
-            </div>
-
-
-            <!-- Robot Skills Section -->
-            <div class="section-header">
-                <div>
-                    <span class="section-title" data-i18n="skills.title">Robot Skills</span>
-                    <span class="section-subtitle">#Demonstrations</span>
-                </div>
-            </div>
-
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-video">
-                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20260113/532e2375f0789ba10b70cfd71777290d.jpg" alt="Platform">
-                        <div class="play-button">▶</div>
-                    </div>
-                    <div class="skill-info">
-                        <div class="skill-title" data-i18n="skills.platform.title">Interactive Platform</div>
-                        <div class="skill-description" data-i18n="skills.platform.description">Applicable: Agibot X2, A2 Series</div>
-                    </div>
-                </div>
-
-                <div class="skill-card">
-                    <div class="skill-video">
-                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20260113/8a9f982124b93cb5561ed9f80a2bab37.jpg" alt="Soul">
-                        <div class="play-button">▶</div>
-                    </div>
-                    <div class="skill-info">
-                        <div class="skill-title" data-i18n="skills.soul.title">Soul Platform</div>
-                        <div class="skill-description" data-i18n="skills.soul.description">Applicable: Agibot X2</div>
-                    </div>
-                </div>
-
-                <div class="skill-card">
-                    <div class="skill-video">
-                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20250828/95d637abaec556ff7e079e2476938ae1.png" alt="Performance">
-                        <div class="play-button">▶</div>
-                    </div>
-                    <div class="skill-info">
-                        <div class="skill-title" data-i18n="skills.drum.title">Long Drum Dance</div>
-                        <div class="skill-description" data-i18n="skills.drum.description">Applicable: Agibot A2 Pro</div>
-                    </div>
-                </div>
-
-                <div class="skill-card">
-                    <div class="skill-video">
-                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20250828/97dedd9e7f7535e97208483a4ce9819b.png" alt="Welcome">
-                        <div class="play-button">▶</div>
-                    </div>
-                    <div class="skill-info">
-                        <div class="skill-title" data-i18n="skills.welcome.title">Welcome Ceremony</div>
-                        <div class="skill-description" data-i18n="skills.welcome.description">Applicable: Agibot A2 Ultra</div>
-                    </div>
-                </div>
-
-                <div class="skill-card">
-                    <div class="skill-video">
-                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20241227/2aad139da4f934098b097b36d99b3b74.png" alt="Festive">
-                        <div class="play-button">▶</div>
-                    </div>
-                    <div class="skill-info">
-                        <div class="skill-title" data-i18n="skills.festive.title">Festive Performance</div>
-                        <div class="skill-description" data-i18n="skills.festive.description">Applicable: Agibot Genie G1</div>
-                    </div>
-                </div>
-
-                <div class="skill-card">
-                    <div class="skill-video">
-                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20251015/22e181d4e8d3c595aeec6c0b72790878.png" alt="Music">
-                        <div class="play-button">▶</div>
-                    </div>
-                    <div class="skill-info">
-                        <div class="skill-title" data-i18n="skills.music.title">Music Performance</div>
-                        <div class="skill-description" data-i18n="skills.music.description">Applicable: Full Product Series</div>
-                    </div>
-                </div>
-
-                <div class="skill-card">
-                    <div class="skill-video">
-                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20250820/92ca73204183e700d2484e8db082f3ea.png" alt="Dance">
-                        <div class="play-button">▶</div>
-                    </div>
-                    <div class="skill-info">
-                        <div class="skill-title" data-i18n="skills.dance.title">Dynamic Dance</div>
-                        <div class="skill-description" data-i18n="skills.dance.description">Applicable: Agibot D1 Edu</div>
-                    </div>
-                </div>
-
-                <div class="skill-card">
-                    <div class="skill-video">
-                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20250521/311a5e9a2962c03a0b40c79eb77a99e7.png" alt="Greeting">
-                        <div class="play-button">▶</div>
-                    </div>
-                    <div class="skill-info">
-                        <div class="skill-title" data-i18n="skills.greeting.title">Interactive Greeting</div>
-                        <div class="skill-description" data-i18n="skills.greeting.description">Applicable: Agibot X2</div>
-                    </div>
-                </div>
-            </div>
 
             <!-- Hot Scenarios -->
             <div class="section-header">
@@ -1213,6 +1239,7 @@
             <div class="product-grid" id="product-grid">
                 <!-- Products will be dynamically rendered with correct prices -->
             </div>
+
         </div>
     </div>
 
@@ -1326,6 +1353,161 @@
             </div>
 
             <div class="load-more" data-i18n="community.news.nomore">No more content</div>
+
+            <!-- Community Videos Section -->
+            <div class="section-header" style="margin-top: 2.5rem;">
+                <div class="section-title" data-i18n="community.videos.title">Community Highlights</div>
+                <span class="section-subtitle" data-i18n="community.videos.subtitle">#Fans & Community</span>
+            </div>
+
+            <div class="community-videos">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20260113/532e2375f0789ba10b70cfd71777290d.jpg" alt="Christmas Party">
+                        <div class="video-play-overlay">
+                            <div class="video-play-button">▶</div>
+                            <div class="video-duration">00:45</div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title" data-i18n="community.videos.video1.title">Agibot A2 Pro Steals the Show at Berlin Christmas Market</div>
+                        <div class="video-meta">
+                            <span class="video-author" data-i18n="community.videos.video1.author">@BerlinTechFan</span>
+                            <span class="video-stats">
+                                <span>👁️ 12.5K</span>
+                                <span>❤️ 892</span>
+                            </span>
+                        </div>
+                        <div class="video-description" data-i18n="community.videos.video1.description">Our Agibot robot performed a festive dance at the local Christmas market - the crowd went wild! Best investment for our community event ever! 🎄🤖</div>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20260113/d594f58c5a06b3b5b11d4fa2277e16b2.jpg" alt="Wedding Performance">
+                        <div class="video-play-overlay">
+                            <div class="video-play-button">▶</div>
+                            <div class="video-duration">01:23</div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title" data-i18n="community.videos.video2.title">Surprise Wedding Dance with Agibot Genie - Unforgettable Moment!</div>
+                        <div class="video-meta">
+                            <span class="video-author" data-i18n="community.videos.video2.author">@RomaWeddingPlanner</span>
+                            <span class="video-stats">
+                                <span>👁️ 28.3K</span>
+                                <span>❤️ 2.1K</span>
+                            </span>
+                        </div>
+                        <div class="video-description" data-i18n="community.videos.video2.description">Rented Agibot Genie for my sister's wedding in Rome. The robot performed a choreographed dance with the bride & groom - everyone was amazed! Perfect for special occasions! 💍✨</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- SKILLS PAGE -->
+    <div id="skills-page" class="page">
+        <div class="main-content">
+            <div class="section-header" style="margin-top: 1.5rem;">
+                <div>
+                    <span class="section-title" data-i18n="skills.title">Robot Skills</span>
+                    <span class="section-subtitle">#Demonstrations</span>
+                </div>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-video">
+                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20260113/532e2375f0789ba10b70cfd71777290d.jpg" alt="Platform">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="skill-info">
+                        <div class="skill-title" data-i18n="skills.platform.title">Interactive Platform</div>
+                        <div class="skill-description" data-i18n="skills.platform.description">Applicable: Agibot X2, A2 Series</div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-video">
+                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20260113/8a9f982124b93cb5561ed9f80a2bab37.jpg" alt="Soul">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="skill-info">
+                        <div class="skill-title" data-i18n="skills.soul.title">Soul Platform</div>
+                        <div class="skill-description" data-i18n="skills.soul.description">Applicable: Agibot X2</div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-video">
+                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20250828/95d637abaec556ff7e079e2476938ae1.png" alt="Performance">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="skill-info">
+                        <div class="skill-title" data-i18n="skills.drum.title">Long Drum Dance</div>
+                        <div class="skill-description" data-i18n="skills.drum.description">Applicable: Agibot A2 Pro</div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-video">
+                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20250828/97dedd9e7f7535e97208483a4ce9819b.png" alt="Welcome">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="skill-info">
+                        <div class="skill-title" data-i18n="skills.welcome.title">Welcome Ceremony</div>
+                        <div class="skill-description" data-i18n="skills.welcome.description">Applicable: Agibot A2 Ultra</div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-video">
+                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20241227/2aad139da4f934098b097b36d99b3b74.png" alt="Festive">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="skill-info">
+                        <div class="skill-title" data-i18n="skills.festive.title">Festive Performance</div>
+                        <div class="skill-description" data-i18n="skills.festive.description">Applicable: Agibot Genie G1</div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-video">
+                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20251015/22e181d4e8d3c595aeec6c0b72790878.png" alt="Music">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="skill-info">
+                        <div class="skill-title" data-i18n="skills.music.title">Music Performance</div>
+                        <div class="skill-description" data-i18n="skills.music.description">Applicable: Full Product Series</div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-video">
+                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20250820/92ca73204183e700d2484e8db082f3ea.png" alt="Dance">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="skill-info">
+                        <div class="skill-title" data-i18n="skills.dance.title">Dynamic Dance</div>
+                        <div class="skill-description" data-i18n="skills.dance.description">Applicable: Agibot D1 Edu</div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-video">
+                        <img src="https://www.zhiyuan-robot.com/public/uploads/images/20250521/311a5e9a2962c03a0b40c79eb77a99e7.png" alt="Greeting">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="skill-info">
+                        <div class="skill-title" data-i18n="skills.greeting.title">Interactive Greeting</div>
+                        <div class="skill-description" data-i18n="skills.greeting.description">Applicable: Agibot X2</div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -1369,6 +1551,10 @@
         <div class="nav-item" data-page="community-page">
             <div class="nav-icon">🔄</div>
             <div data-i18n="nav.community">Community</div>
+        </div>
+        <div class="nav-item" data-page="skills-page">
+            <div class="nav-icon">🎯</div>
+            <div data-i18n="nav.skills">Skills</div>
         </div>
         <div class="nav-item" data-page="profile-page">
             <div class="nav-icon">👤</div>
@@ -1504,8 +1690,8 @@
                 "scenarios.commercial.subtitle": "商业演出",
                 "scenarios.livestream": "直播带货",
                 "scenarios.livestream.subtitle": "网红直播",
-                "scenarios.custom": "定制服务",
-                "scenarios.custom.subtitle": "个性化方案",
+                "scenarios.cleaning": "清洁服务",
+                "scenarios.cleaning.subtitle": "商业清洁",
                 "products.x2.name": "智元灵犀X2青春版",
                 "products.x2.label": "畅销款",
                 "products.a2ultra.name": "智元远征A2旗舰版",
@@ -1549,13 +1735,21 @@
                 "community.influencer.feature3": "曝光支持",
                 "community.news.title": "最新动态",
                 "community.news.item1.title": "智元首次欧洲发布会在意大利举行",
-                "community.news.item2.title": "15倍速提升！VLA部署突破",
+                "community.news.item2.title": "15倍速提升!VLA部署突破",
                 "community.news.item3.title": "智元亮相英国BETT展览会",
                 "community.news.nomore": "没有更多内容",
                 "community.news.item1.description": "智元机器人正式进军欧洲市场，首站选择意大利米兰。",
                 "community.news.item2.description": "视觉-语言-行动模型部署效率提升15倍，实时响应成为可能。",
                 "community.news.item3.title.full": "智元机器人亮相英国伦敦BETT教育科技展",
                 "community.news.item3.description": "智元携多款教育机器人产品参展BETT 2026。",
+                "community.videos.title": "社区精彩瞬间",
+                "community.videos.subtitle": "#粉丝社群",
+                "community.videos.video1.title": "Agibot A2 Pro在柏林圣诞市集惊艳全场",
+                "community.videos.video1.author": "@柏林科技迷",
+                "community.videos.video1.description": "我们的Agibot机器人在当地圣诞市集表演了节日舞蹈 - 人群疯狂！有史以来社区活动最佳投资！🎄🤖",
+                "community.videos.video2.title": "Agibot Genie婚礼惊喜舞蹈 - 难忘时刻！",
+                "community.videos.video2.author": "@罗马婚礼策划师",
+                "community.videos.video2.description": "为我姐姐在罗马的婚礼租了Agibot Genie。机器人与新人共舞编排舞蹈 - 所有人都惊呆了！特殊场合的完美选择！💍✨",
                 "skills.title": "技能市场",
                 "skills.subtitle": "探索机器人能力扩展",
                 "skills.search.placeholder": "搜索技能包...",
@@ -1613,8 +1807,8 @@
                 "scenarios.commercial.subtitle": "Commercial Shows",
                 "scenarios.livestream": "Livestream",
                 "scenarios.livestream.subtitle": "Influencer Live",
-                "scenarios.custom": "Custom",
-                "scenarios.custom.subtitle": "Custom Solutions",
+                "scenarios.cleaning": "Cleaning",
+                "scenarios.cleaning.subtitle": "Business Cleaning",
                 "products.x2.name": "Agibot X2",
                 "products.x2.label": "Best Seller",
                 "products.a2ultra.name": "Agibot A2 Ultra",
@@ -1661,6 +1855,14 @@
                 "community.news.item2.title": "15x Speed Boost! VLA Deployment Breakthrough",
                 "community.news.item3.title": "Agibot Debuts at UK BETT Exhibition",
                 "community.news.nomore": "No more content",
+                "community.videos.title": "Community Highlights",
+                "community.videos.subtitle": "#Fans & Community",
+                "community.videos.video1.title": "Agibot A2 Pro Steals the Show at Berlin Christmas Market",
+                "community.videos.video1.author": "@BerlinTechFan",
+                "community.videos.video1.description": "Our Agibot robot performed a festive dance at the local Christmas market - the crowd went wild! Best investment for our community event ever! 🎄🤖",
+                "community.videos.video2.title": "Surprise Wedding Dance with Agibot Genie - Unforgettable Moment!",
+                "community.videos.video2.author": "@RomaWeddingPlanner",
+                "community.videos.video2.description": "Rented Agibot Genie for my sister's wedding in Rome. The robot performed a choreographed dance with the bride & groom - everyone was amazed! Perfect for special occasions! 💍✨",
                 "skills.title": "Robot Skills",
                 "skills.platform.title": "Interactive Platform",
                 "skills.platform.description": "For Lingxi X2, Yuanzheng A2...",
